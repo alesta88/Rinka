@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf66f120bd1fd34abe4f14a993fe95c, type: 3}
+  m_Name: stage05_part01_var02_walls
+  m_EditorClassIdentifier: 
+  Difficulty: 0
+  LowerEntryPosition: {x: -1024, y: 190}
+  LowerExitPosition: {x: 1024, y: 96}
+  ItemSpawnAreaSprite: {fileID: 21300000, guid: 7f2d2d5f3c78fe747be008acfd9b744b,
+    type: 3}
+  BackgroundData: {fileID: 11400000, guid: 5f248b8f4cf8940489aeeff0db7ac4af, type: 2}
+  WallObject: {fileID: 1674893655205622, guid: 1fb0f07f2300b824fa48f5836defb00c, type: 2}
+  PlayerSpawnPosition: {x: -2.378, y: 0.276626}
+  MinOrbDistance: 0.5
+  MaxOrbDistance: 0.85
+  MinOrbCount: 6
+  MaxOrbCount: 8
+  StageGenerate: {fileID: 11400000, guid: 6475275098f3528479038596db0131f3, type: 2}

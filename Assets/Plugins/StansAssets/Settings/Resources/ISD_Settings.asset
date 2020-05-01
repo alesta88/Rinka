@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31eababc099d4442fa4d077e54e58fe7, type: 3}
+  m_Name: ISD_Settings
+  m_EditorClassIdentifier: 
+  IsfwSettingOpen: 0
+  IsLibSettingOpen: 0
+  IslinkerSettingOpne: 0
+  IscompilerSettingsOpen: 0
+  IsPlistSettingsOpen: 0
+  IsLanguageSettingOpen: 1
+  IsDefFrameworksOpen: 1
+  IsDefLibrariesOpen: 1
+  IsBuildSettingsOpen: 0
+  ToolbarIndex: 0
+  Frameworks:
+  - IsOptional: 0
+    IsEmbeded: 0
+    Type: 81
+  EmbededFrameworks: []
+  Libraries: []
+  Flags: []
+  PlistVariables: []
+  VariableDictionary: []
+  Languages: []
+  ShellScripts: []
+  m_buildProperties:
+  - m_name: ENABLE_BITCODE
+    m_value: NO
+    m_options:
+    - YES
+    - NO
+  - m_name: ENABLE_TESTABILITY
+    m_value: NO
+    m_options:
+    - YES
+    - NO
+  - m_name: GENERATE_PROFILING_CODE
+    m_value: NO
+    m_options:
+    - YES
+    - NO
+  Capabilities:
+  - CapabilityType: 2
+    EntitlementsFilePath: 
+    AddOptionalFramework: 0
+  iCloudCapabilitySettings:
+    KeyValueStorage: 0
+    iCloudDocument: 0
+    CustomContainers: []
+  PushNotificationsCapabilitySettings:
+    Development: 1
+  Files: []

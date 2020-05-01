@@ -1,0 +1,18 @@
+===========================================
+ステージを変更したい場合は以下の手順でやってください
+===========================================
+１．stage0x_part0x_var0x_walls.pngのファイル入れ替え
+２．Inspectorで「Pixels Per Unit」を100→1000に変更
+３．SpriteEditorボタンで
+	a. 「Custom Physics Shape」を押して
+	b. Outline Toleranceを1にして
+	c.　Generateを押してくApplyしてください
+４．隣のitemspawnファイルが変わらない場合、６に遷移してください。
+５．Gimpなどの画像編集ソフトを使ってitemspawnのpngを編集してください。
+６．walls.pngのファイルを選択して
+	a. InspectorのRead/Write Enabledを有効してください。
+	b. Editorに戻ったらImporterがAssets/Data/StageDataにステージmetaファイルが生成されてRead/Write Enabledが正しく無効化になります。
+７．入れ替えしたいファイルの設定を使って自分の生成したファイルに設定してください。
+７．生成されたAssets/Data/StageDataのファイルをStage0Xのフォルダーの中のファイルと入れ替え
+	a. stage0xのStageMetaDataファイルにChunksのところに入れてください。
+	

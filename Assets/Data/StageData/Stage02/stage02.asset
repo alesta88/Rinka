@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbcc426634dcec54c8e9cfe6dcf7ef81, type: 3}
+  m_Name: stage02
+  m_EditorClassIdentifier: 
+  StageSelectionImage: {fileID: 21300000, guid: 49a9a125ff2dfda47ab5df3f819868e8,
+    type: 3}
+  DifficultyIndicatorImage: {fileID: 21300000, guid: 70852cd61eef3a04fa9de984480ce490,
+    type: 3}
+  IsShowAd: 1
+  Difficulty: 2
+  PointsPerOrb: 5
+  OrbClearCount: 10
+  StageNumber: 2
+  Chunks:
+    array:
+    - {fileID: 11400000, guid: 7c01720afe758cb4d89eb5a69c5ebf90, type: 2}
+    - {fileID: 11400000, guid: 13a54a7839d86e04dab287a938eafd39, type: 2}
+    - {fileID: 11400000, guid: fca47a5ce77537e41918f167757fc762, type: 2}
+    - {fileID: 11400000, guid: 1d705e632fd0c9642a4efd1971f5464a, type: 2}
+    - {fileID: 11400000, guid: 61be73c195457744db44e7db1a8b207b, type: 2}
+    - {fileID: 11400000, guid: 2fff27b20700b2a43b1ef98da7b01a36, type: 2}

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da473799218630a47a13e723d42ca595, type: 3}
+  m_Name: eng_text_data
+  m_EditorClassIdentifier: 
+  Language: 10
+  NativeConfirmDiagText: OK
+  AppReviewRequestTitle: Enjoying Rinka?
+  AppReviewRequestMsg: Tap a star to rate it on the App Store.
+  HighScoreSocialMsg: Just scored {1} points in Rinka. Can anyone beat this? http://rinka.moonisland.jp/en/
+  LastScoreSocialMsg: Just scored {0} points in Rinka. Anyone up to beat my best score
+    of {1}? http://rinka.moonisland.jp/en/
+  PromoteSocialMsg: Uh, can anyone beat my high score of... {1}?
+  HighScoreSocialMsgWithHashtag: 'Just scored {1} points in #Rinka Can anyone match
+    this? http://rinka.moonisland.jp/en/'
+  LastScoreSocialMsgWithHashtag: 'Just scored {0} points in #Rinka Anyone up to beat
+    my best score of {1}? http://rinka.moonisland.jp/en/'
+  PromoteSocialMsgWithHashtag: 'Uh, can anyone beat my high score of... {1}? #Rinka'
+  NoAppInstalledTitle: Notice
+  NoAppInstalledMsg: App not found.
+  RestoreSuccessTitle: Notice
+  RestoreSuccessMsg: Purchase(s) restored successfully.
+  NoConnectionErrorTitle: Notice
+  NoConnectionErrorMsg: "Connection error. \nPlease check network connection."
+  RestoreErrorTitle: Notice
+  RestoreErrorMsg: 'Could not restore any previous purchases.
+
+    Please restart app and try again.'
+  InitErrorTitle: Notice
+  InitErrorMsg: "Initialization error. \nPlease restart app."
+  PurchaseSettingsErrorTitle: Notice
+  PurchaseSettingsErrorMsg: "Purchase error. \nPlease recheck your settings."
+  UnknownPurchaseErrorTitle: Notice
+  UnknownPurchaseErrorMsg: "Purchase error. \nPlease try again after a few moments."
+  AdvertisementDownloadingErrorTitle: Notice
+  AdvertisementDownloadingErrorMsg: "Your ad is being prepared. \r\nPlease try again
+    in a few moments."
