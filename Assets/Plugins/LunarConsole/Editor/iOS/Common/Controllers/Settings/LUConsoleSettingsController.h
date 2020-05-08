@@ -4,7 +4,7 @@
 //  Lunar Unity Mobile Console
 //  https://github.com/SpaceMadness/lunar-unity-console
 //
-//  Copyright 2017 Alex Lementuev, SpaceMadness.
+//  Copyright 2019 Alex Lementuev, SpaceMadness.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -23,29 +23,8 @@
 
 #import "LUViewController.h"
 
-@class LUConsolePluginSettings;
-@class LUConsoleSettingsController;
-
-@interface LUConsoleSettingsEntry : NSObject
-
-@property (nonatomic, readonly) NSString * name;
-@property (nonatomic, readonly) NSString * title;
-@property (nonatomic, readonly) NSString * type;
-@property (nonatomic, strong)   id value;
-@property (nonatomic, readonly) NSString * initialValue;
-@property (nonatomic, readonly, getter=isChanged) BOOL changed;
-@property (nonatomic, assign, getter=isProOnly) BOOL proOnly;
-
-- (instancetype)initWithName:(NSString *)name value:(id)value type:(NSString *)type title:(NSString *)title;
-
-+ (NSArray *)listSettingsEntries:(LUConsolePluginSettings *)settings;
-
-@end
-
 @interface LUConsoleSettingsController : LUViewController
 
-@property (nonatomic, readonly) NSArray * changedEntries;
-
-- (instancetype)initWithSettings:(LUConsolePluginSettings *)settings;
+- (instancetype)initWithSettings:(LUPluginSettings *)settings;
 
 @end

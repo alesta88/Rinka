@@ -51,7 +51,7 @@ PlayerSettings:
   m_StereoRenderingPath: 0
   m_ActiveColorSpace: 0
   m_MTRendering: 1
-  m_StackTraceTypes: 020000000100000002000000020000000100000001000000
+  m_StackTraceTypes: 010000000100000001000000010000000100000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
   iosUseCustomAppBackgroundBehavior: 0
@@ -884,7 +884,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Build: 0
+    Build: 1
     Collab: 0
     UNet: 1
   luminIcon:
@@ -899,10 +899,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 3
-  cloudProjectId: f3fe13e9-adea-40e5-999c-9697992fa93a
+  cloudProjectId: 8a886029-d676-4e5c-a727-020fe51934a8
   framebufferDepthMemorylessMode: 0
-  projectName: Rinka
-  organizationId: unity_zxrc5u5ezxfowa
+  projectName: Rinka_test
+  organizationId: 3f192872-f172-428f-981f-be24f3497a9d
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

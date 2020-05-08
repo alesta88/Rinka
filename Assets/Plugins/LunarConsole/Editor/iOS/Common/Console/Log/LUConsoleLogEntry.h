@@ -4,7 +4,7 @@
 //  Lunar Unity Mobile Console
 //  https://github.com/SpaceMadness/lunar-unity-console
 //
-//  Copyright 2017 Alex Lementuev, SpaceMadness.
+//  Copyright 2019 Alex Lementuev, SpaceMadness.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -74,7 +74,9 @@ typedef uint8_t LUConsoleLogTypeMask;
 /// Console entry for displaying in overlay view
 @interface LUConsoleOverlayLogEntry : LUConsoleLogEntry
 
-+ (instancetype)entryWithEntry:(LUConsoleLogEntry *)entry;
+/// Scheduled removal date (after becoming visible)
+@property (nonatomic, strong) NSDate *removalDate;
+
 - (instancetype)initWithEntry:(LUConsoleLogEntry *)entry;
 
 @end

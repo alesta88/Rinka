@@ -4,7 +4,7 @@
 //  Lunar Unity Mobile Console
 //  https://github.com/SpaceMadness/lunar-unity-console
 //
-//  Copyright 2017 Alex Lementuev, SpaceMadness.
+//  Copyright 2019 Alex Lementuev, SpaceMadness.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -25,29 +25,30 @@
 
 void LUDisplayAlertView(NSString *title, NSString *message)
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
                                                         message:message
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
     [alertView show];
+#pragma clang diagnostic pop
 }
 
 CGRect LUGetScreenBounds()
 {
-    if (LU_IOS_VERSION_AVAILABLE(__IPHONE_8_0))
-    {
+    if (LU_IOS_VERSION_AVAILABLE(__IPHONE_8_0)) {
         return [UIScreen mainScreen].bounds;
     }
-    
+
     CGRect screenSize = [UIScreen mainScreen].bounds;
-    if (LUIsLandscapeInterfaceOrientation())
-    {
+    if (LUIsLandscapeInterfaceOrientation()) {
         CGFloat width = CGRectGetWidth(screenSize);
         CGFloat height = CGRectGetHeight(screenSize);
         screenSize.size = CGSizeMake(height, width);
     }
-    
+
     return screenSize;
 }
 

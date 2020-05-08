@@ -4,7 +4,7 @@
 //  Lunar Unity Mobile Console
 //  https://github.com/SpaceMadness/lunar-unity-console
 //
-//  Copyright 2017 Alex Lementuev, SpaceMadness.
+//  Copyright 2019 Alex Lementuev, SpaceMadness.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -23,12 +23,11 @@
 
 #import "Lunar.h"
 
-@interface LUExceptionWarningController ()
-{
-    NSString * _message;
+@interface LUExceptionWarningController () {
+    NSString *_message;
 }
 
-@property (nonatomic, weak) IBOutlet UILabel  *errorLabel;
+@property (nonatomic, weak) IBOutlet UILabel *errorLabel;
 
 @end
 
@@ -37,8 +36,7 @@
 - (instancetype)initWithMessage:(NSString *)message
 {
     self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
-    if (self)
-    {
+    if (self) {
         _message = message;
     }
     return self;
@@ -48,7 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     _errorLabel.text = _message;
 }
 
@@ -57,16 +55,14 @@
 
 - (IBAction)onShowButton:(id)sender
 {
-    if ([_delegate respondsToSelector:@selector(exceptionWarningControllerDidShow:)])
-    {
+    if ([_delegate respondsToSelector:@selector(exceptionWarningControllerDidShow:)]) {
         [_delegate exceptionWarningControllerDidShow:self];
     }
 }
 
 - (IBAction)onDismissButton:(id)sender
 {
-    if ([_delegate respondsToSelector:@selector(exceptionWarningControllerDidDismiss:)])
-    {
+    if ([_delegate respondsToSelector:@selector(exceptionWarningControllerDidDismiss:)]) {
         [_delegate exceptionWarningControllerDidDismiss:self];
     }
 }

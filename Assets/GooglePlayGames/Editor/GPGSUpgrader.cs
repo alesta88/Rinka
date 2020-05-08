@@ -111,7 +111,7 @@ namespace GooglePlayGames.Editor
                 GPGSUtil.GenerateAndroidManifest();
             }
 
-            AssetDatabase.Refresh();
+           //alesta AssetDatabase.Refresh();
         }
 
         /// <summary>

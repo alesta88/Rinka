@@ -4,7 +4,7 @@
 //  Lunar Unity Mobile Console
 //  https://github.com/SpaceMadness/lunar-unity-console
 //
-//  Copyright 2017 Alex Lementuev, SpaceMadness.
+//  Copyright 2019 Alex Lementuev, SpaceMadness.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -82,7 +82,7 @@ namespace LunarConsoleEditorInternal
         {
             if (uri == null)
             {
-                throw new ArgumentNullException("Uri is null");
+                throw new ArgumentNullException("uri");
             }
 
             m_uri = uri;
@@ -93,7 +93,7 @@ namespace LunarConsoleEditorInternal
         {
             if (callback == null)
             {
-                throw new ArgumentNullException("Callback is null");
+                throw new ArgumentNullException("callback");
             }
 
             if (m_client == null)
@@ -129,7 +129,7 @@ namespace LunarConsoleEditorInternal
         {
             if (callback == null)
             {
-                throw new ArgumentNullException("Callback is null");
+                throw new ArgumentNullException("callback");
             }
 
             if (m_client == null)

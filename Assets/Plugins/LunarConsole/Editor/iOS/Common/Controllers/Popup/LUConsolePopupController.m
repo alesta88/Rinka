@@ -4,7 +4,7 @@
 //  Lunar Unity Mobile Console
 //  https://github.com/SpaceMadness/lunar-unity-console
 //
-//  Copyright 2017 Alex Lementuev, SpaceMadness.
+//  Copyright 2019 Alex Lementuev, SpaceMadness.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -118,6 +118,8 @@ NSString * const LUConsolePopupControllerWillDisappearNotification = @"LUConsole
     
     // "Learn more..." button
     _learnMoreButton.hidden = YES;
+	
+	LU_SET_ACCESSIBILITY_IDENTIFIER(_closeButton, @"Popup Controller Close Button");
 }
 
 - (void)viewWillAppear:(BOOL)animated

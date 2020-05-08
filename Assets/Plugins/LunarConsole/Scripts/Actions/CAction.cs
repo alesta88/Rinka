@@ -4,7 +4,7 @@
 //  Lunar Unity Mobile Console
 //  https://github.com/SpaceMadness/lunar-unity-console
 //
-//  Copyright 2017 Alex Lementuev, SpaceMadness.
+//  Copyright 2019 Alex Lementuev, SpaceMadness.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ namespace LunarConsolePluginInternal
 
             if (actionDelegate == null)
             {
-                throw new ArgumentNullException("Action delegate is null");
+                throw new ArgumentNullException("actionDelegate");
             }
 
             m_id = s_nextActionId++;
