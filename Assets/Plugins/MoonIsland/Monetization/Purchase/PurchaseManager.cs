@@ -515,6 +515,7 @@ public abstract class PurchaseManager<T> : MonoSingleton<T>, IStoreListener wher
         // 未初期化の場合は、未処理
         if ( !IsInitialized() ) {
             ErrorLog( PurchaseError.NotInitialization );
+            Debug.Log("Not ini"); //alesta
             return;
         }
 

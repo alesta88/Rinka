@@ -165,9 +165,9 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.moonisland.rinka2
+    Android: com.moonisland.rinkatest
     Standalone: com.Company.ProductName
-    iPhone: com.moonisland.rinka
+    iPhone: com.moonisland.rinkatest
   buildNumber:
     iPhone: 2200
   AndroidBundleVersionCode: 2200
@@ -886,6 +886,8 @@ PlayerSettings:
   cloudServicesEnabled:
     Build: 1
     Collab: 0
+    ErrorHub: 0
+    Hub: 0
     UNet: 1
   luminIcon:
     m_Name: 
