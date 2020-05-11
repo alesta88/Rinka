@@ -62,8 +62,10 @@ public abstract class PurchaseManager<T> : MonoSingleton<T>, IStoreListener wher
         DuplicateTransaction,       // 重複取引
 
         // UnityIAPのInitializationFailureReasonをラッピング
-        NoProductsAvailable,        // 使用可能商品が無
+
+        Available,        // 使用可能商品が無
         AppNotKnown,                // 知らないアプリ
+        NoProductsAvailable,
     }
     /// <summary>ストア購入直前の失敗文一覧</summary>
     readonly Dictionary<PurchaseError, string> m_purchaseErrors = new Dictionary<PurchaseError, string>() {
