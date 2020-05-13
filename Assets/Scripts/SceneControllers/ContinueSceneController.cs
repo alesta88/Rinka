@@ -39,7 +39,7 @@ public class ContinueSceneController : MonoBehaviour, ISceneController {
     void BindInput() {
         // 戻るボタンが押された
         m_closeContinueWindowArea.ObservableButton( this ).Subscribe( _ => GameModel.GameState.Value = Define.GameState.GameOver );
-        m_purchaseAdSkipBtn.ObservableButton( this ).Subscribe( _ => RinkaPurchaseManager.Instance.Buy( ProductModel.Instance.ProductInfos[0] ) );
+        //alestaads2  m_purchaseAdSkipBtn.ObservableButton( this ).Subscribe( _ => RinkaPurchaseManager.Instance.Buy( ProductModel.Instance.ProductInfos[0] ) );
         m_playAdBtn.ObservableButton( this ).Subscribe( _ => GameModel.GameState.Value = Define.GameState.PlayContinueAd );
         m_continueBtn.ObservableButton( this ).Subscribe( _ => GameModel.GameState.Value = Define.GameState.Playing );
     }

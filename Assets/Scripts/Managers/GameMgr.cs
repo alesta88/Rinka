@@ -26,7 +26,7 @@ public class GameMgr : MonoSingleton<GameMgr> {
 
         DialogMgr.Instance.Init( Application.systemLanguage );
 
-        while ( !RinkaPurchaseManager.Instance.IsInitialized() )
+        //alestaads2 //while ( !RinkaPurchaseManager.Instance.IsInitialized() )
             yield return null;
 
        //alestaads1 //while ( !RinkaAdvertisementManager.Instance.isInitialized )
@@ -35,12 +35,12 @@ public class GameMgr : MonoSingleton<GameMgr> {
         SceneMgr.Instance.FadeIn();
         // TODO: Facebook統合
         //FacebookMgr.Instance.Init();
-#if UNITY_ANDROID
-        GooglePlayMgr.Instance.Init();
-        GooglePlayMgr.Instance.SignIn( null, null );
-#elif UNITY_IOS
-        GameCenterMgr.Instance.Init();
-#endif
+//alesta3 #if UNITY_ANDROID
+//        GooglePlayMgr.Instance.Init();
+//        GooglePlayMgr.Instance.SignIn( null, null );
+//#elif UNITY_IOS
+//        GameCenterMgr.Instance.Init();
+//#endif
         var net = NetworkManager.Instance;
         GameModel.GameState.Value = GameModel.IsTutorial.Value ? Define.GameState.Tutorial : Define.GameState.Title;
         SceneMgr.Instance.LoadScene( Define.Scene.TITLE );

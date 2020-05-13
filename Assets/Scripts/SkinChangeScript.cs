@@ -84,7 +84,7 @@ public class SkinChangeScript : MonoBehaviour, ISceneController
         m_backIcon.ObservableButton(this).Subscribe(_ => GameModel.GameState.Value = Define.GameState.StageSelection);
         m_nextSkinImage.ObservableButton(this).Subscribe(_ => LeftChoise());
         m_setSkinImage.ObservableButton(this).Subscribe(_ => SetSkin(NowSkin));
-        m_skipAdsImage.ObservableButton(this).Subscribe(_ => RinkaPurchaseManager.Instance.Buy(ProductModel.Instance.ProductInfos[0]));
+        //alestaads2  m_skipAdsImage.ObservableButton(this).Subscribe(_ => RinkaPurchaseManager.Instance.Buy(ProductModel.Instance.ProductInfos[0]));
     }
 
 

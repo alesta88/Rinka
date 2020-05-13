@@ -94,7 +94,8 @@ public class StageChunkView : MonoBehaviour {
             m_wall.name = chunkData.StageGenerate.WallObject.name;
 #if !RELEASE || ENABLE_LOG
             var second = DebugMainInfo.Instance.StopMeasure();
-            Debug.LogError( $"壁生成秒 : {second}" );
+           // Debug.LogError( $"壁生成秒 : {second}" );
+            Debug.Log( $"壁生成秒 : {second}" );
 #endif
         }
     }

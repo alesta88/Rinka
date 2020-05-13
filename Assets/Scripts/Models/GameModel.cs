@@ -60,7 +60,7 @@ public static class GameModel {
             .Subscribe(
                 isPurchased => {
                     PlayerPrefsUtil.SetBool( Define.PlayerPref.IS_AD_SKIP_PURCHASED, isPurchased );
-                    //aleetaads1 RinkaAdvertisementManager.isEnable = !isPurchased;
+                     //aleetaads1 RinkaAdvertisementManager.isEnable = !isPurchased;
                 }
             );
         IsAdSkipPurchased.Value = PlayerPrefsUtil.GetBool( Define.PlayerPref.IS_AD_SKIP_PURCHASED );

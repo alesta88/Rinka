@@ -278,8 +278,8 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
         }
         else if (prevState == Define.GameState.GameOver && nextState == Define.GameState.StageSelection)
         {
-            //alestaads1 RinkaAdvertisementManager.Instance.Refresh();
-            RinkaPurchaseManager.Instance.Refresh();
+            //alestaads1  RinkaAdvertisementManager.Instance.Refresh();
+            //alestaads2 RinkaPurchaseManager.Instance.Refresh();
             UnloadScene(Define.Scene.PLAY);
             UnloadScene(Define.Scene.GAMEOVER);
             StageMgr.Instance.ConsumedOrbsInStage = 0;

@@ -20,7 +20,7 @@ public abstract class AdvertisementManager<T> : MonoSingleton<T> where T : MonoB
     public bool isShowing {
         get { return m_unityAds.isPlaying; }
     }
-    /// <summary>初期化済か？</summary>
+    /// <summary>初期化済か？</summary> 
     public bool isInitialized {
         get { return m_unityAds.isInitialized; }
     }

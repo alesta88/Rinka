@@ -31,25 +31,25 @@ public class TestPurchase : MonoBehaviour {
 
 
         // 課金初期化
-        var p = RinkaPurchaseManager.Instance;
+        //alestaads2 //var p = RinkaPurchaseManager.Instance;
 
-        foreach ( var info in ProductModel.Instance.ProductInfos ) {
-            var go = Instantiate( m_buttonPrefab.gameObject, transform );
-            go.SetActive( true );
-            go.name = info.name;
-            go.GetComponentInChildren<Text>().text = info.name;
-            go.GetComponentInChildren<Button>().onClick
-                .AddListener( () => RinkaPurchaseManager.Instance.Buy( info ) );
-        }
-        // リストアボタン作成
-        {
-            var go = Instantiate( m_buttonPrefab.gameObject, transform );
-            go.SetActive( true );
-            go.name = "リストア";
-            go.GetComponentInChildren<Text>().text = go.name;
-            go.GetComponentInChildren<Button>().onClick
-                .AddListener( () => RinkaPurchaseManager.Instance.Restore() );
-        }
+        //foreach ( var info in ProductModel.Instance.ProductInfos ) {
+        //    var go = Instantiate( m_buttonPrefab.gameObject, transform );
+        //    go.SetActive( true );
+        //    go.name = info.name;
+        //    go.GetComponentInChildren<Text>().text = info.name;
+        //    go.GetComponentInChildren<Button>().onClick
+        //        .AddListener( () => RinkaPurchaseManager.Instance.Buy( info ) );
+        //}
+        //// リストアボタン作成
+        //{
+        //    var go = Instantiate( m_buttonPrefab.gameObject, transform );
+        //    go.SetActive( true );
+        //    go.name = "リストア";
+        //    go.GetComponentInChildren<Text>().text = go.name;
+        //    go.GetComponentInChildren<Button>().onClick
+        //        .AddListener( () => RinkaPurchaseManager.Instance.Restore() );
+        //}
     }
 
     void Update() {

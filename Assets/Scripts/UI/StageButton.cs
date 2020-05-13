@@ -67,7 +67,7 @@ public class StageButton : MonoBehaviour {
                 GameModel.SpawnStageChunk.Value = metaData.Chunks[0];
                 //alestaads  GameModel.GameState.Value = m_adState == ButtonAdState.NONE ?
                 //    Define.GameState.Playing :  Define.GameState.PlayStageSelectionAd;
-                GameModel.GameState.Value = Define.GameState.Playing;//alestaads
+                GameModel.GameState.Value = Define.GameState.Playing;//alestaads 
                 Analytics.CustomEvent( Define.AnalyticsEvent.STAGE_SELECTION, new Dictionary<string, object>() {
                     ["stage"] = metaData.Difficulty
                 } );

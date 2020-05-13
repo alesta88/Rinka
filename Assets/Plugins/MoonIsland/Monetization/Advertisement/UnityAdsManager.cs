@@ -116,7 +116,7 @@ public class UnityAdsManager {
         }
 
         // 再生
-        //alestaads Advertisement.Show(
+        //alestaads  Advertisement.Show(
         //    id,
         //    new ShowOptions { resultCallback = result => {
         //        // 最後まで見ても、途中で飛ばしても、失敗でも、等しくonFinishされる

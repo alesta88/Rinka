@@ -88,7 +88,7 @@ public class TitleSceneController : MonoBehaviour, ISceneController {
         m_facebookIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.PostFacebookMessage() );
         m_lineIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.PostLineMessage() );
         m_quitSettingsInput.ObservableButton( this ).Subscribe( _ => GameModel.GameState.Value = Define.GameState.Title );
-        m_restoreImage.ObservableButton( this ).Subscribe( _ => RinkaPurchaseManager.Instance.Restore() );
+        //alestaads2 m_restoreImage.ObservableButton( this ).Subscribe( _ => RinkaPurchaseManager.Instance.Restore() );
     }
 
     //***********************************************************
