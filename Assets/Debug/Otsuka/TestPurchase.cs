@@ -13,21 +13,21 @@ public class TestPurchase : MonoBehaviour {
 
     void Start() {
         // 広告初期化
-        var a = RinkaAdvertisementManager.Instance;
+        //alestaads1//var a = RinkaAdvertisementManager.Instance;
 
-        var buttons = GetComponentsInChildren<Button>();
-        foreach ( var b in buttons ) {
-            b.onClick.AddListener( () => {
-                switch ( b.name ) {
-                    case "ButtonSkip":
-                        RinkaAdvertisementManager.Instance.PlayMovie( true );
-                        break;
-                    case "ButtonForced":
-                        RinkaAdvertisementManager.Instance.PlayMovie( false );
-                        break;
-                }
-            } );
-        }
+        //var buttons = GetComponentsInChildren<Button>();
+        //foreach ( var b in buttons ) {
+        //    b.onClick.AddListener( () => {
+        //        switch ( b.name ) {
+        //            case "ButtonSkip":
+        //                RinkaAdvertisementManager.Instance.PlayMovie( true );
+        //                break;
+        //            case "ButtonForced":
+        //                RinkaAdvertisementManager.Instance.PlayMovie( false );
+        //                break;
+        //        }
+        //    } );
+        //}
 
 
         // 課金初期化

@@ -40,7 +40,7 @@ namespace UnityEngine.Purchasing
             ConfigurationBuilder builder = ConfigurationBuilder.Instance(module);
 
             IAPConfigurationHelper.PopulateConfigurationBuilder(ref builder, instance.catalog);
-            Debug.Log( "purchase init" );
+
             UnityPurchasing.Initialize(instance, builder);
 
             unityPurchasingInitialized = true;

@@ -60,7 +60,7 @@ public static class GameModel {
             .Subscribe(
                 isPurchased => {
                     PlayerPrefsUtil.SetBool( Define.PlayerPref.IS_AD_SKIP_PURCHASED, isPurchased );
-                    RinkaAdvertisementManager.isEnable = !isPurchased;
+                    //aleetaads1 RinkaAdvertisementManager.isEnable = !isPurchased;
                 }
             );
         IsAdSkipPurchased.Value = PlayerPrefsUtil.GetBool( Define.PlayerPref.IS_AD_SKIP_PURCHASED );
@@ -69,7 +69,7 @@ public static class GameModel {
     /// <summary>
     /// ゲームスタートから死ぬまでの指定期間の間、広告を表示しないように設定
     /// </summary>
-    static void InitContinueAds() {
+    static void InitContinueAds() {//
         // ゲームスタート時にContinue広告を表示しない
         GameState.Buffer( 2, 1 ).Subscribe( states => {
             var prevState = states[0];

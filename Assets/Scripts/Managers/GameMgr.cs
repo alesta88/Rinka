@@ -29,8 +29,8 @@ public class GameMgr : MonoSingleton<GameMgr> {
         while ( !RinkaPurchaseManager.Instance.IsInitialized() )
             yield return null;
 
-        while ( !RinkaAdvertisementManager.Instance.isInitialized )
-            yield return null;
+       //alestaads1 //while ( !RinkaAdvertisementManager.Instance.isInitialized )
+        //    yield return null;
 
         SceneMgr.Instance.FadeIn();
         // TODO: Facebook統合

@@ -24,7 +24,7 @@ public class NetworkManager : MonoSingleton<NetworkManager> {
         isConnection.DistinctUntilChanged().Subscribe( isConect => {
             if ( isConect ) {
                 Debug.Log( "接続管理 : 接続時リフレッシュ" );
-                RinkaAdvertisementManager.Instance.Refresh();
+                //alestaads1 RinkaAdvertisementManager.Instance.Refresh();
                 // ここで課金クラスをリフレッシュすると
                 // 登録されているeventが削除されて
                 // 課金後のeventが呼び出されない可能性がある

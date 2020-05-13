@@ -42,8 +42,8 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
         // タイトル画面から遷移
         if (prevState == Define.GameState.Title && nextState == Define.GameState.StageSelection)
         {
-            RinkaAdvertisementManager.Instance.Refresh();
-            RinkaPurchaseManager.Instance.Refresh();
+            //alestaads RinkaAdvertisementManager.Instance.Refresh();
+            //alestaads RinkaPurchaseManager.Instance.Refresh();
             LoadScene(Define.Scene.STAGESELECTION);
         }
         // ステージ選択画面から遷移
@@ -58,33 +58,34 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
                 StageSelectionToPlayGame();
             }
             else if (nextState == Define.GameState.PlayStageSelectionAd)
-            {
-                FadeIn();
-                Analytics.CustomEvent(Define.AnalyticsEvent.FULL_AD_START);
-                RinkaAdvertisementManager.Instance.PlayMovie(
-                    isSkip: false,
-                    onFinish: () =>
-                    {
-                        Observable.NextFrame().Subscribe(_ =>
-                        {
-                            GameModel.GameState.Value = Define.GameState.Playing;
-                            FadeOut();
-                        });
-                    }, onSkip: () =>
-                    {
-                        Observable.NextFrame().Subscribe(_ =>
-                        {
-                            GameModel.GameState.Value = Define.GameState.StageSelection;
-                            FadeOut();
-                        });
-                    }, onError: () =>
-                    {
-                        Observable.NextFrame().Subscribe(_ =>
-                        {
-                            GameModel.GameState.Value = Define.GameState.StageSelection;
-                            FadeOut();
-                        });
-                    });
+            { 
+                //FadeIn();
+                //Analytics.CustomEvent(Define.AnalyticsEvent.FULL_AD_START);
+                ////alestaads RinkaAdvertisementManager.Instance.PlayMovie(
+                //    isSkip: false,
+                //    onFinish: () =>
+                //    {
+                //        Observable.NextFrame().Subscribe(_ =>
+                //        {
+                //            GameModel.GameState.Value = Define.GameState.Playing;
+                //            FadeOut();
+                //        });
+                //    }, onSkip: () =>
+                //    {
+                //        Observable.NextFrame().Subscribe(_ =>
+                //        {
+                //            GameModel.GameState.Value = Define.GameState.StageSelection;
+                //            FadeOut();
+                //        });
+                //    }, onError: () =>
+                //    {
+                //        Observable.NextFrame().Subscribe(_ =>
+                //        {
+                //            GameModel.GameState.Value = Define.GameState.StageSelection;
+                //            FadeOut();
+                //        });
+                //    });
+                //StageSelectionToPlayGame(); 
             }
             else if (nextState == Define.GameState.Skin)
             {
@@ -141,31 +142,32 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
             else if (nextState == Define.GameState.PlayContinueAd)
             {
                 FadeIn(0f);
-                Analytics.CustomEvent(Define.AnalyticsEvent.FULL_AD_START);
-                RinkaAdvertisementManager.Instance.PlayMovie(
-                    isSkip: false,
-                    onFinish: () =>
-                    {
-                        Observable.NextFrame().Subscribe(_ =>
-                       {
-                           GameModel.GameState.Value = Define.GameState.Playing;
-                           FadeOut();
-                       });
-                    }, onSkip: () =>
-                    {
-                        Observable.NextFrame().Subscribe(_ =>
-                       {
-                           GameModel.GameState.Value = Define.GameState.Continue;
-                           FadeOut();
-                       });
-                    }, onError: () =>
-                    {
-                        Observable.NextFrame().Subscribe(_ =>
-                       {
-                           GameModel.GameState.Value = Define.GameState.Continue;
-                           FadeOut();
-                       });
-                    });
+                //alestaads Analytics.CustomEvent(Define.AnalyticsEvent.FULL_AD_START);
+                ////alestaads RinkaAdvertisementManager.Instance.PlayMovie(
+                //    isSkip: false,
+                //    onFinish: () =>
+                //    {
+                //        Observable.NextFrame().Subscribe(_ =>
+                //       {
+                //           GameModel.GameState.Value = Define.GameState.Playing;
+                //           FadeOut();
+                //       });
+                //    }, onSkip: () =>
+                //    {
+                //        Observable.NextFrame().Subscribe(_ =>
+                //       {
+                //           GameModel.GameState.Value = Define.GameState.Continue;
+                //           FadeOut();
+                //       });
+                //    }, onError: () =>
+                //    {
+                //        Observable.NextFrame().Subscribe(_ =>
+                //       {
+                //           GameModel.GameState.Value = Define.GameState.Continue;
+                //           FadeOut();
+                //       });
+                //    });
+                GameModel.GameState.Value = Define.GameState.Playing;
             }
         }
         else if (prevState == Define.GameState.Clear)///////// 
@@ -186,31 +188,32 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
             else if (nextState == Define.GameState.PlayContinueAd)
             {
                 FadeIn(0f);
-                Analytics.CustomEvent(Define.AnalyticsEvent.FULL_AD_START);
-                RinkaAdvertisementManager.Instance.PlayMovie(
-                    isSkip: false,
-                    onFinish: () =>
-                    {
-                        Observable.NextFrame().Subscribe(_ =>
-                        {
-                            GameModel.GameState.Value = Define.GameState.Playing;
-                            FadeOut();
-                        });
-                    }, onSkip: () =>
-                    {
-                        Observable.NextFrame().Subscribe(_ =>
-                        {
-                            GameModel.GameState.Value = Define.GameState.Continue;
-                            FadeOut();
-                        });
-                    }, onError: () =>
-                    {
-                        Observable.NextFrame().Subscribe(_ =>
-                        {
-                            GameModel.GameState.Value = Define.GameState.Continue;
-                            FadeOut();
-                        });
-                    });
+                ////alestaads Analytics.CustomEvent(Define.AnalyticsEvent.FULL_AD_START);
+                //RinkaAdvertisementManager.Instance.PlayMovie(
+                //    isSkip: false,
+                //    onFinish: () =>
+                //    {
+                //        Observable.NextFrame().Subscribe(_ =>
+                //        {
+                //            GameModel.GameState.Value = Define.GameState.Playing;
+                //            FadeOut();
+                //        });
+                //    }, onSkip: () =>
+                //    {
+                //        Observable.NextFrame().Subscribe(_ =>
+                //        {
+                //            GameModel.GameState.Value = Define.GameState.Continue;
+                //            FadeOut();
+                //        });
+                //    }, onError: () =>
+                //    {
+                //        Observable.NextFrame().Subscribe(_ =>
+                //        {
+                //            GameModel.GameState.Value = Define.GameState.Continue;
+                //            FadeOut();
+                //        });
+                //    });
+                GameModel.GameState.Value = Define.GameState.Playing;
             }
             // Continue画面の広告から遷移
         }
@@ -231,31 +234,32 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
             else if (nextState == Define.GameState.PlayContinueAd)
             {
                 FadeIn(0f);
-                Analytics.CustomEvent(Define.AnalyticsEvent.FULL_AD_START);
-                RinkaAdvertisementManager.Instance.PlayMovie(
-                    isSkip: false,
-                    onFinish: () =>
-                    {
-                        Observable.NextFrame().Subscribe(_ =>
-                        {
-                            GameModel.GameState.Value = Define.GameState.Playing;
-                            FadeOut();
-                        });
-                    }, onSkip: () =>
-                    {
-                        Observable.NextFrame().Subscribe(_ =>
-                        {
-                            GameModel.GameState.Value = Define.GameState.Continue;
-                            FadeOut();
-                        });
-                    }, onError: () =>
-                    {
-                        Observable.NextFrame().Subscribe(_ =>
-                        {
-                            GameModel.GameState.Value = Define.GameState.Continue;
-                            FadeOut();
-                        });
-                    });
+                ////alestaads Analytics.CustomEvent(Define.AnalyticsEvent.FULL_AD_START);
+                //RinkaAdvertisementManager.Instance.PlayMovie(
+                //    isSkip: false,
+                //    onFinish: () =>
+                //    {
+                //        Observable.NextFrame().Subscribe(_ =>
+                //        {
+                //            GameModel.GameState.Value = Define.GameState.Playing;
+                //            FadeOut();
+                //        });
+                //    }, onSkip: () =>
+                //    {
+                //        Observable.NextFrame().Subscribe(_ =>
+                //        {
+                //            GameModel.GameState.Value = Define.GameState.Continue;
+                //            FadeOut();
+                //        });
+                //    }, onError: () =>
+                //    {
+                //        Observable.NextFrame().Subscribe(_ =>
+                //        {
+                //            GameModel.GameState.Value = Define.GameState.Continue;
+                //            FadeOut();
+                //        });
+                //    });
+                GameModel.GameState.Value = Define.GameState.Playing;
             }
 
 
@@ -274,7 +278,7 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
         }
         else if (prevState == Define.GameState.GameOver && nextState == Define.GameState.StageSelection)
         {
-            RinkaAdvertisementManager.Instance.Refresh();
+            //alestaads1 RinkaAdvertisementManager.Instance.Refresh();
             RinkaPurchaseManager.Instance.Refresh();
             UnloadScene(Define.Scene.PLAY);
             UnloadScene(Define.Scene.GAMEOVER);
@@ -462,4 +466,4 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
         base.OnDestroy();
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-}
+} 

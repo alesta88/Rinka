@@ -83,7 +83,7 @@ public class UnityAdsManager {
             // 初期化失敗防止の為、初期化（通常は既に行われている）
             Advertisement.Initialize(
 #if UNITY_ANDROID
-                "2684011",
+                "3598378",
 #elif UNITY_IOS
                 "2684009",
 #endif
@@ -116,27 +116,27 @@ public class UnityAdsManager {
         }
 
         // 再生
-        Advertisement.Show(
-            id,
-            new ShowOptions { resultCallback = result => {
-                // 最後まで見ても、途中で飛ばしても、失敗でも、等しくonFinishされる
-                switch ( result ) {
-                    case ShowResult.Finished:
-                        Debug.Log( "UnityAds動画広告 : 正常終了" );
-                        onFinish?.Invoke();
-                        break;
-                    case ShowResult.Skipped:
-                        Debug.Log( "UnityAds動画広告 : 飛越" );
-                        onSkip?.Invoke();
-                        break;
-                    case ShowResult.Failed:
-                        Debug.LogError( "UnityAds動画広告 : 失敗" );
-                        Refresh( null );
-                        onFinish?.Invoke();
-                        break;
-                }
-            } }
-        );
+        //alestaads Advertisement.Show(
+        //    id,
+        //    new ShowOptions { resultCallback = result => {
+        //        // 最後まで見ても、途中で飛ばしても、失敗でも、等しくonFinishされる
+        //        switch ( result ) {
+        //            case ShowResult.Finished:
+        //                Debug.Log( "UnityAds動画広告 : 正常終了" );
+        //                onFinish?.Invoke();
+        //                break;
+        //            case ShowResult.Skipped:
+        //                Debug.Log( "UnityAds動画広告 : 飛越" );
+        //                onSkip?.Invoke();
+        //                break;
+        //            case ShowResult.Failed:
+        //                Debug.LogError( "UnityAds動画広告 : 失敗" );
+        //                Refresh( null );
+        //                onFinish?.Invoke();
+        //                break;
+        //        }
+        //    } }
+        //);
     }
     ///------------------------------------------------------------------------------------------------
     /// <summary>

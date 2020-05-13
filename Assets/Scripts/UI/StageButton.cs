@@ -32,11 +32,11 @@ public class StageButton : MonoBehaviour {
     void UpdateUI() {
         // 広告状態を設定
         // 広告非表示の場合、無状態
-        //if ( GameModel.IsAdSkipPurchased.Value || !m_doesStageShowAd )  { m_adState = ButtonAdState.NONE; }
-        //// 広告失敗中の場合、失敗状態
-        //else if ( GameModel.IsAdError.Value )                           { m_adState = ButtonAdState.ERROR; }
-        //// それ以外の場合、再生中状態
-        //else                                                           
+        if (GameModel.IsAdSkipPurchased.Value || !m_doesStageShowAd) { m_adState = ButtonAdState.NONE; }
+        // 広告失敗中の場合、失敗状態
+        else if (GameModel.IsAdError.Value) { m_adState = ButtonAdState.ERROR; }
+        // それ以外の場合、再生中状態
+        else
         { m_adState = ButtonAdState.PLAY; }
 
         // 画像状態を設定
@@ -65,8 +65,9 @@ public class StageButton : MonoBehaviour {
             .Subscribe( _ => {
                 GameModel.Stage.Value = metaData;
                 GameModel.SpawnStageChunk.Value = metaData.Chunks[0];
-                GameModel.GameState.Value = m_adState == ButtonAdState.NONE ?
-                    Define.GameState.Playing :  Define.GameState.PlayStageSelectionAd;
+                //alestaads  GameModel.GameState.Value = m_adState == ButtonAdState.NONE ?
+                //    Define.GameState.Playing :  Define.GameState.PlayStageSelectionAd;
+                GameModel.GameState.Value = Define.GameState.Playing;//alestaads
                 Analytics.CustomEvent( Define.AnalyticsEvent.STAGE_SELECTION, new Dictionary<string, object>() {
                     ["stage"] = metaData.Difficulty
                 } );

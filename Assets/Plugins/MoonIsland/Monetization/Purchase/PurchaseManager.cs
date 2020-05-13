@@ -205,6 +205,7 @@ public abstract class PurchaseManager<T> : MonoSingleton<T>, IStoreListener wher
 
             // Unityの課金システム構築
             var module = StandardPurchasingModule.Instance();
+            
 #if UNITY_EDITOR
             module.useFakeStoreUIMode = FakeStoreUIMode.StandardUser;
 #endif
@@ -265,7 +266,7 @@ public abstract class PurchaseManager<T> : MonoSingleton<T>, IStoreListener wher
     public void OnInitializeFailed( InitializationFailureReason error ) {
         Debug.LogError( "課金 : 初期化失敗" );
         m_initialize = InitializeState.Failure;
-        ErrorLog( error );
+        ErrorLog(error);
     }
 #endregion
 

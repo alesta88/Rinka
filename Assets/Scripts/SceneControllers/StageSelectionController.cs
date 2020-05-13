@@ -17,7 +17,7 @@ public class StageSelectionController : MonoBehaviour, ISceneController {
     // 初期化
     //***********************************************************
     void Start() {
-        BindModelToUI();
+      //alestaads  BindModelToUI();
         BindInput();
         BindInput2();
         Init();
@@ -34,7 +34,7 @@ public class StageSelectionController : MonoBehaviour, ISceneController {
         // 戻るボタンが押された
         m_backIcon.ObservableButton( this ).Subscribe( _ => GameModel.GameState.Value = Define.GameState.Title );
      //   m_skinBtn.ObservableButton(this).Subscribe(_ => GameModel.GameState.Value = Define.GameState.Skin);
-        m_skipAdsImage.ObservableButton( this ).Subscribe( _ => RinkaPurchaseManager.Instance.Buy( ProductModel.Instance.ProductInfos[0] ) );
+     //alestaads   m_skipAdsImage.ObservableButton( this ).Subscribe( _ => RinkaPurchaseManager.Instance.Buy( ProductModel.Instance.ProductInfos[0] ) );
      
     }
     void BindInput2()
