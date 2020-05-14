@@ -814,7 +814,7 @@ PlayerSettings:
     4: NO_GPGS
     7: 
   platformArchitecture:
-    iPhone: 0
+    iPhone: 2
   scriptingBackend:
     Android: 1
   il2cppCompilerConfiguration:
