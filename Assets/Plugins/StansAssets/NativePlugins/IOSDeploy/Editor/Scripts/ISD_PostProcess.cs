@@ -38,7 +38,7 @@ namespace SA.IOSDeploy
 
             PBXProject proj = new PBXProject();
             proj.ReadFromFile(pbxProjPath);
-            string targetGuid = proj.TargetGuidByName("Unity-iPhone");
+            string targetGuid = proj.GetUnityMainTargetGuid(); //alestaios proj.TargetGuidByName("Unity-iPhone");
             
            
 

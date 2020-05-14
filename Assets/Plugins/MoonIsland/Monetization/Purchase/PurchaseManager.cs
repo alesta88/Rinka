@@ -206,9 +206,9 @@ public abstract class PurchaseManager<T> : MonoSingleton<T>, IStoreListener wher
             // Unityの課金システム構築
             var module = StandardPurchasingModule.Instance();
             
-#if UNITY_EDITOR
-            module.useFakeStoreUIMode = FakeStoreUIMode.StandardUser;
-#endif
+//#if UNITY_EDITOR
+//            module.useFakeStoreUIMode = FakeStoreUIMode.StandardUser;
+//#endif //alestaios
             var builder = ConfigurationBuilder.Instance( module );
             // 商品リストを ConfigurationBuilder に登録
             foreach ( var info in m_productInfos ) {

@@ -77,7 +77,7 @@ public class BuildManager : IPreprocessBuildWithReport, IPostprocessBuildWithRep
         var projPath = path + "/Unity-iPhone.xcodeproj/project.pbxproj";
         var proj = new PBXProject();
         proj.ReadFromString( File.ReadAllText( projPath ) );
-        var target = proj.TargetGuidByName( "Unity-iPhone" );
+        var target = proj.GetUnityMainTargetGuid(); ;//alestaios proj.TargetGuidByName( "Unity-iPhone" );
 
         // IAP機能を追加
         proj.AddCapability( target, PBXCapabilityType.InAppPurchase );
