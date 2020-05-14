@@ -16,7 +16,7 @@ MonoBehaviour:
     type: 3}
   DifficultyIndicatorImage: {fileID: 21300000, guid: d3ed052f7fea41b47a144e1c30be78c9,
     type: 3}
-  IsShowAd: 1
+  IsShowAd: 0
   Difficulty: 4
   PointsPerOrb: 50
   OrbClearCount: 10
