@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
+//using DG.Tweening;
 using UniRx;
 using UniRx.Triggers;
 using TMPro;
@@ -32,13 +32,13 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
 
     private Subject<Unit> onSwipeLeft = new Subject<Unit>();
     //alesta unirx
-    public UniRx.IObservable<Unit> OnSwipeLeft
+    public IObservable<Unit> OnSwipeLeft
     {
         get { return onSwipeLeft; }
     }
 
     private Subject<Unit> onSwipeRight = new Subject<Unit>();
-    public UniRx.IObservable<Unit> OnSwipeRight
+    public IObservable<Unit> OnSwipeRight
     {
         get { return onSwipeRight; }
     }
@@ -64,9 +64,9 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
         // 距離のモデルとUIのバインディング
         MessageBroker.Default.Receive<DistanceTravelEvent>().Subscribe( _ => {
             m_distanceText.text = $"{ GameModel.TotalDistance.Value.ToString( "0." )}m";
-            m_distanceText.DOFadeAtSpeed( 1f, 1f ).SetUpdate( true ).OnComplete( () => {
-                m_distanceText.DOFadeAtSpeed( 0f, 1f );
-            } );
+            //m_distanceText.DOFadeAtSpeed( 1f, 1f ).SetUpdate( true ).OnComplete( () => {
+            //    m_distanceText.DOFadeAtSpeed( 0f, 1f );
+            //} );
         } );
     }
 
