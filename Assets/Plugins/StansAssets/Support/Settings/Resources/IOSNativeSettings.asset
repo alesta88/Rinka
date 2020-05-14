@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d5c8dadb03c4328a428367673ec4b2, type: 3}
   m_Name: IOSNativeSettings
   m_EditorClassIdentifier: 
-  EnableGameCenterAPI: 0
-  EnableInAppsAPI: 0
+  EnableGameCenterAPI: 1
+  EnableInAppsAPI: 1
   EnableCameraAPI: 0
-  EnableSocialSharingAPI: 0
+  EnableSocialSharingAPI: 1
   EnablePickerAPI: 0
   EnableMediaPlayerAPI: 0
   EnableReplayKit: 0
@@ -25,11 +25,11 @@ MonoBehaviour:
   EnableForceTouchAPI: 0
   EnablePushNotificationsAPI: 0
   EnableContactsAPI: 0
-  EnableAppEventsAPI: 0
-  EnableUserNotificationsAPI: 0
+  EnableAppEventsAPI: 1
+  EnableUserNotificationsAPI: 1
   EnablePermissionAPI: 0
   AppleId: 1003165345
-  ToolbarIndex: 0
+  ToolbarIndex: 5
   ExpandMoreActionsMenu: 1
   ExpandModulesSettings: 1
   InAppsEditorTesting: 1
@@ -66,7 +66,19 @@ MonoBehaviour:
   AppleMusicUsageDescription: for playing music
   ContactsUsageDescription: for contacts reading
   UrlTypes: []
-  ApplicationQueriesSchemes: []
+  ApplicationQueriesSchemes:
+  - Identifier: fb
+    Schemes: []
+    IsOpen: 0
+  - Identifier: line
+    Schemes: []
+    IsOpen: 0
+  - Identifier: twitter
+    Schemes: []
+    IsOpen: 0
+  - Identifier: twitter://
+    Schemes: []
+    IsOpen: 0
   ForceTouchMenu: []
   DisablePluginLogs: 0
   SoomlaDownloadLink: http://goo.gl/7LYwuj
