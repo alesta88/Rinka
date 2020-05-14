@@ -145,7 +145,7 @@
 //    ///------------------------------------------------------------------------------------------------
 //    public void UpdateDebug() {
 //        // 軽量化の為、stringを可能な限り分離
-//        const string text1 = "広告状態 : 飛, 報 : {0}, {1}";
+//        const string text1 = "広告状態 : 飛, 報 : {0}, {1}"; 
 //        DebugDisplay.Instance.Add(
 //            string.Format(
 //                text1,

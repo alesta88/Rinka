@@ -9,7 +9,7 @@ public static class UniRxExtensions {
     /// <summary>
     /// Observableボタンを作成
     /// </summary>
-    static public IObservable<PointerEventData> ObservableButton( this GameObject btnObject, Component controller ) {
+    static public UniRx.IObservable<PointerEventData> ObservableButton( this GameObject btnObject, Component controller ) {
         var btnInputArea = btnObject.GetComponent<ButtonInputArea>();
         GameObject btnObj = btnInputArea != null ? btnInputArea.Area.gameObject : btnObject.gameObject;
 
@@ -21,8 +21,8 @@ public static class UniRxExtensions {
 
     /// <summary>
     /// Observableボタンを作成
-    /// </summary>
-    static public IObservable<PointerEventData> ObservableButton( this Image btnImage, Component controller ) {
+    /// </summary>//alesta unirx
+    static public UniRx.IObservable<PointerEventData> ObservableButton( this Image btnImage, Component controller ) {
         return ObservableButton( btnImage.gameObject, controller );
     }
 }

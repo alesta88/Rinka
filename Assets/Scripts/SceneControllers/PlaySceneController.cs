@@ -31,13 +31,14 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
     public float ThresholdDistance = 100.0f;
 
     private Subject<Unit> onSwipeLeft = new Subject<Unit>();
-    public IObservable<Unit> OnSwipeLeft
+    //alesta unirx
+    public UniRx.IObservable<Unit> OnSwipeLeft
     {
         get { return onSwipeLeft; }
     }
 
     private Subject<Unit> onSwipeRight = new Subject<Unit>();
-    public IObservable<Unit> OnSwipeRight
+    public UniRx.IObservable<Unit> OnSwipeRight
     {
         get { return onSwipeRight; }
     }

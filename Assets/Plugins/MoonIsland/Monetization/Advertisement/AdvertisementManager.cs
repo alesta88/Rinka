@@ -99,7 +99,7 @@
 //        CheckSuccess(
 //            () => m_unityAds.PlayMovie( isSkip, onFinish, onSkip, onError ),    // 成功
 //            onError                                                     // 失敗
-//        );
+//        ); 
 //    }
 //    ///------------------------------------------------------------------------------------------------
 //    /// <summary>
