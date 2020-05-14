@@ -61,7 +61,7 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
         // Reactiveではなくてスタート時だけに更新
         m_highScoreText.text = "Best " + GameModel.HighScore.Value;
 
-        // 距離のモデルとUIのバインディング
+        // 距離のモデルとUIのバインディング 
         MessageBroker.Default.Receive<DistanceTravelEvent>().Subscribe( _ => {
             m_distanceText.text = $"{ GameModel.TotalDistance.Value.ToString( "0." )}m";
             //m_distanceText.DOFadeAtSpeed( 1f, 1f ).SetUpdate( true ).OnComplete( () => {
