@@ -85,7 +85,7 @@ public class UnityAdsManager {
 #if UNITY_ANDROID
                 "3598378",
 #elif UNITY_IOS
-                "2684009",
+                "3598379",
 #endif
 #if RELEASE
                 false
