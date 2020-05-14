@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using SA.Common.Models;
-using SA.IOSNative.Social;
+//using SA.Common.Models;
+//using SA.IOSNative.Social;
 
 /// <summary>
 /// SNS管理クラス
