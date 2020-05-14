@@ -8,7 +8,7 @@ public class PlayerDeathEvent : IGameEvent {
         Debug.Log("LIVES " + GameModel.PlayerLives.Value);
         GameModel.StageWhenDied.Value = StageMgr.Instance.CurrentStage;//StageMgr.Instance.ClearNowStage; //
        // GameModel.StageC.Value = StageMgr.Instance.ClearMetaData;
-        SnsMgr.Instance.ReportScore();
+    //alestasns    SnsMgr.Instance.ReportScore();
         AudioMgr.Instance.PlayDeath();
         GameModel.CumulativeDistance.Value += GameModel.CurrentLifeDistance.Value;
 

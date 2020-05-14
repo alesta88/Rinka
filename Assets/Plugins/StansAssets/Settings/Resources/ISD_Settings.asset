@@ -21,7 +21,7 @@ MonoBehaviour:
   IsDefFrameworksOpen: 1
   IsDefLibrariesOpen: 1
   IsBuildSettingsOpen: 0
-  ToolbarIndex: 1
+  ToolbarIndex: 4
   Frameworks:
   - IsOptional: 0
     IsEmbeded: 0

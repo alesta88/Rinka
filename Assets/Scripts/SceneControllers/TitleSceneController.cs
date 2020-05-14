@@ -81,12 +81,12 @@ public class TitleSceneController : MonoBehaviour, ISceneController {
     void BindSettingsInput() {
         m_audioOffIcon.ObservableButton( this ).Subscribe( _ => GameModel.IsAudioOn.Value = true );
         m_audioOnIcon.ObservableButton( this ).Subscribe( _ => GameModel.IsAudioOn.Value = false );
-        m_reviewIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.RequestAppReview() );
-        m_gameCenterRankingIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.DisplayRanking() );
-        m_googlePlayRankingIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.DisplayRanking() );
-        m_twitterIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.PostTwitterMessage() );
-        m_facebookIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.PostFacebookMessage() );
-        m_lineIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.PostLineMessage() );
+    //alestasns    //m_reviewIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.RequestAppReview() );
+        //m_gameCenterRankingIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.DisplayRanking() );
+        //m_googlePlayRankingIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.DisplayRanking() );
+        //m_twitterIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.PostTwitterMessage() );
+        //m_facebookIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.PostFacebookMessage() );
+        //m_lineIcon.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.PostLineMessage() );
         m_quitSettingsInput.ObservableButton( this ).Subscribe( _ => GameModel.GameState.Value = Define.GameState.Title );
         //alestaads2 m_restoreImage.ObservableButton( this ).Subscribe( _ => RinkaPurchaseManager.Instance.Restore() );
     }

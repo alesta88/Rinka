@@ -15,7 +15,7 @@ public class ClearStageEvent : IGameEvent
         var i = GameModel.Stage.Value.StageNumber;
      //   GameModel.Stage.Value = StageMgr.Instance.m_stageFlow.Stages[i]; 
         Debug.Log("!!!" + GameModel.StageWhenDied.Value.Difficulty);
-        SnsMgr.Instance.ReportScore();
+   //alestasns     SnsMgr.Instance.ReportScore();
         AudioMgr.Instance.PlayDeath();
         GameModel.CumulativeDistance.Value += GameModel.CurrentLifeDistance.Value;
 

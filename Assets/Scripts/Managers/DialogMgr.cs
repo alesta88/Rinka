@@ -63,27 +63,27 @@ public class DialogMgr : MonoSingleton<DialogMgr> {
         }
     }
 
-    public string GetTwitterRankingMsg() {
-        int score = GameModel.Score.Value;
-        int highScore = GameModel.HighScore.Value;
-        bool isHighScore = GameModel.ScoreMsgType.Value == Define.Ranking.MsgType.HighScore;
+    //alestasns public string GetTwitterRankingMsg() {
+    //    int score = GameModel.Score.Value;
+    //    int highScore = GameModel.HighScore.Value;
+    //    bool isHighScore = GameModel.ScoreMsgType.Value == Define.Ranking.MsgType.HighScore;
 
-        // 設定画面からのメッセージ
-        if( GameModel.GameState.Value == Define.GameState.Settings ) {
-            return ( highScore == 0 ) ?
-                string.Format( Text.PromoteSocialMsgWithHashtag, score, highScore ) :
-                string.Format( Text.HighScoreSocialMsgWithHashtag, score, highScore );
-        }
+    //    // 設定画面からのメッセージ
+    //    if( GameModel.GameState.Value == Define.GameState.Settings ) {
+    //        return ( highScore == 0 ) ?
+    //            string.Format( Text.PromoteSocialMsgWithHashtag, score, highScore ) :
+    //            string.Format( Text.HighScoreSocialMsgWithHashtag, score, highScore );
+    //    }
 
-        // ゲームオバー画面からのメッセージ
-        if( score == 0 ) {
-            return string.Format( Text.PromoteSocialMsgWithHashtag, score, highScore );
-        } else if( isHighScore ) {
-            return string.Format( Text.HighScoreSocialMsgWithHashtag, score, highScore );
-        } else {
-            return string.Format( Text.LastScoreSocialMsgWithHashtag, score, highScore );
-        }
-    }
+    //    // ゲームオバー画面からのメッセージ
+    //    if( score == 0 ) {
+    //        return string.Format( Text.PromoteSocialMsgWithHashtag, score, highScore );
+    //    } else if( isHighScore ) {
+    //        return string.Format( Text.HighScoreSocialMsgWithHashtag, score, highScore );
+    //    } else {
+    //        return string.Format( Text.LastScoreSocialMsgWithHashtag, score, highScore );
+    //    }
+    //}
 
     //***********************************************************
     // エラーダイアログ
