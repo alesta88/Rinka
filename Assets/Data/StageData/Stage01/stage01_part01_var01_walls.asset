@@ -20,10 +20,10 @@ MonoBehaviour:
   BackgroundData: {fileID: 11400000, guid: f3d0f77f5dfeca145a8a9822d341d21f, type: 2}
   WallObject: {fileID: 1994344734119906, guid: 2da073ff4b373334481a42a7d15b97ba, type: 3}
   PlayerSpawnPosition: {x: -2.51, y: 0}
-  MinOrbDistance: 0.2
-  MaxOrbDistance: 0.5
+  MinOrbDistance: 0.3
+  MaxOrbDistance: 0.8
   MinOrbCount: 5
-  MaxOrbCount: 15
+  MaxOrbCount: 12
   StageGenerate: {fileID: 11400000, guid: 352bacd450c14ab4fb037efafffe8833, type: 2}
   rotate_value: 45
   stageColor: {r: 1, g: 1, b: 1, a: 1}

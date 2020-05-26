@@ -132,58 +132,59 @@ public class GenerateWalls : MonoBehaviour {
 
     void FindRandomTopObj()
     {
-        int min; 
-        int max;
-        StCount = StageMgr.Instance.StagesCounter;
+        //int min; 
+        //int max;
+        //StCount = StageMgr.Instance.StagesCounter;
 
-        if (SpawnTopObject.Length>=StCount+SpawnTopObject.Length/2)
-        {
-            min = StCount-1;
-        }
-        else
-        {
-            min = SpawnTopObject.Length - SpawnTopObject.Length / 2-1;
-        }
+        //if (SpawnTopObject.Length>=StCount+SpawnTopObject.Length/2)
+        //{
+        //    min = StCount-1;
+        //}
+        //else
+        //{
+        //    min = SpawnTopObject.Length - SpawnTopObject.Length / 2-1;
+        //}
 
-        if(StCount< SpawnTopObject.Length)
-        {
-            max = SpawnTopObject.Length/2 + StCount-1;
-        }
-        else
-        {
-            max = SpawnTopObject.Length-1;
-        }
+        //if(StCount< SpawnTopObject.Length)
+        //{
+        //    max = SpawnTopObject.Length/2 + StCount-1;
+        //}
+        //else
+        //{
+        //    max = SpawnTopObject.Length-1;
+        //}
     //    Debug.Log("min " + min + " max " + max+" size "+ SpawnTopObject.Length+" size/2 "+ SpawnTopObject.Length/2+" stages counter "+ StCount);
-        randomINT = Random.Range(min, max);//RandomExcept(min, max, randomINT);//
-     //   Debug.Log("random int " + randomINT);
+     //   randomINT = Random.Range(min, max);//RandomExcept(min, max, randomINT);//
+        randomINT = Random.Range(0, SpawnTopObject.Length);
+        //   Debug.Log("random int " + randomINT);
         SpriteWidthScale = SpawnTopObject[randomINT].GetComponent<SpriteRenderer>().sprite.texture.width;
         SpriteHeightScale = SpawnTopObject[randomINT].GetComponent<SpriteRenderer>().sprite.texture.height;
         //Debug.Log("W " + SpriteWidthScale + " H " + SpriteHeightScale);
     }
     void FindRandomBottomObj()
     {
-        int min;
-        int max;
-        StCount = StageMgr.Instance.StagesCounter;
-        if (SpawnBottomObject.Length >= StCount + SpawnBottomObject.Length / 2)
-        {
-            min = StCount-1;
-        }
-        else
-        {
-            min = SpawnBottomObject.Length - SpawnBottomObject.Length / 2-1;
-        }
+        //int min;
+        //int max;
+        //StCount = StageMgr.Instance.StagesCounter;
+        //if (SpawnBottomObject.Length >= StCount + SpawnBottomObject.Length / 2)
+        //{
+        //    min = StCount-1;
+        //}
+        //else
+        //{
+        //    min = SpawnBottomObject.Length - SpawnBottomObject.Length / 2-1;
+        //}
 
-        if (StCount < SpawnBottomObject.Length)
-        {
-            max = SpawnBottomObject.Length / 2 + StCount-1;
-        }
-        else
-        {
-            max = SpawnBottomObject.Length-1;
-        }
-        randomINT = Random.Range(min, max);//RandomExcept(min, max, randomINT);
-                                           // randomINT = Random.Range(0, SpawnBottomObject.Length);
+        //if (StCount < SpawnBottomObject.Length)
+        //{
+        //    max = SpawnBottomObject.Length / 2 + StCount-1;
+        //}
+        //else
+        //{
+        //    max = SpawnBottomObject.Length-1;
+        //}
+       // randomINT = Random.Range(min, max);//RandomExcept(min, max, randomINT);
+       randomINT = Random.Range(0, SpawnBottomObject.Length);
         SpriteWidthScale = SpawnBottomObject[randomINT].GetComponent<SpriteRenderer>().sprite.texture.width;
         SpriteHeightScale = SpawnBottomObject[randomINT].GetComponent<SpriteRenderer>().sprite.texture.height;
         //Debug.Log("W " + SpriteWidthScale + " H " + SpriteHeightScale);
@@ -197,12 +198,12 @@ public class GenerateWalls : MonoBehaviour {
         //Debug.Log("W " + SpriteWidthScale + " H " + SpriteHeightScale);
     }
 
-    public int RandomExcept(int min, int max, int except)
-    {
-        int random = Random.Range(min, max);
-        if (random == except) random = min;
-        return random;
-    }/// <summary>
+    //public int RandomExcept(int min, int max, int except)
+    //{
+    //    int random = Random.Range(min, max);
+    //    if (random == except) random = min;
+    //    return random;
+    //}/// <summary>
     /// list?
     /// </summary>
 

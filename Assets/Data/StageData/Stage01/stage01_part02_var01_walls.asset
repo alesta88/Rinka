@@ -23,7 +23,7 @@ MonoBehaviour:
   MinOrbDistance: 0.2
   MaxOrbDistance: 0.5
   MinOrbCount: 5
-  MaxOrbCount: 15
+  MaxOrbCount: 8
   StageGenerate: {fileID: 11400000, guid: f5442ba8492d2214aaa51908ce9921b4, type: 2}
   rotate_value: 0
   stageColor: {r: 1, g: 1, b: 1, a: 1}
