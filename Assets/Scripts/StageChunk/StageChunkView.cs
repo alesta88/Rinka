@@ -31,6 +31,7 @@ public class StageChunkView : MonoBehaviour {
     public StageChunkData Data { private set; get; }
     public Action<Collider2D> OnHitBoundary;
     public GameObject FinishMark;
+    public GameObject BonusText;
     public event Action OnReturn = () => { };
 
     List<Vector3> orbPositions;
@@ -69,6 +70,7 @@ public class StageChunkView : MonoBehaviour {
         m_orbSpawnSprite.sprite = chunkData.ItemSpawnAreaSprite;
       //  m_orbSpawnSprite2.sharedMesh = chunkData.SpawnMesh;
         m_background.sprite = chunkData.BackgroundData.Sprite;
+        m_background.gameObject.GetComponent<SpriteRenderer>().color = chunkData.stageColor;
     }
 
     void SetPosition( StageChunkView prevChunkView ) {

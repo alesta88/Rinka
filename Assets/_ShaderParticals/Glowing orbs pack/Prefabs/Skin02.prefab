@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -685825900844580755}
   m_Layer: 0
   m_Name: Skin02
-  m_TagString: Untagged
+  m_TagString: clear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,10 +89,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3412938734174710072}
     m_Modifications:
+    - target: {fileID: 1689780695862488096, guid: c2f2f3fc930b4ef4386be4f34860c4c7,
+        type: 3}
+      propertyPath: m_TagString
+      value: clear
+      objectReference: {fileID: 0}
+    - target: {fileID: 2598697986454210469, guid: c2f2f3fc930b4ef4386be4f34860c4c7,
+        type: 3}
+      propertyPath: m_TagString
+      value: clear
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641131959240968925, guid: c2f2f3fc930b4ef4386be4f34860c4c7,
+        type: 3}
+      propertyPath: m_TagString
+      value: clear
+      objectReference: {fileID: 0}
     - target: {fileID: 3335477354358013648, guid: c2f2f3fc930b4ef4386be4f34860c4c7,
         type: 3}
       propertyPath: m_Name
       value: Glowing orb 1.2 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335477354358013648, guid: c2f2f3fc930b4ef4386be4f34860c4c7,
+        type: 3}
+      propertyPath: m_TagString
+      value: clear
+      objectReference: {fileID: 0}
+    - target: {fileID: 4213624874765810568, guid: c2f2f3fc930b4ef4386be4f34860c4c7,
+        type: 3}
+      propertyPath: m_TagString
+      value: clear
       objectReference: {fileID: 0}
     - target: {fileID: 6267017439721716154, guid: c2f2f3fc930b4ef4386be4f34860c4c7,
         type: 3}
@@ -148,6 +173,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8142168510640763479, guid: c2f2f3fc930b4ef4386be4f34860c4c7,
+        type: 3}
+      propertyPath: m_TagString
+      value: clear
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2f2f3fc930b4ef4386be4f34860c4c7, type: 3}

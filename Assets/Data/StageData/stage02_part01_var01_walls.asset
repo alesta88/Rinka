@@ -25,3 +25,5 @@ MonoBehaviour:
   MaxOrbCount: 0
   StageGenerate: {fileID: 0}
   rotate_value: 0
+  stageColor: {r: 0, g: 0, b: 0, a: 0}
+  stageNumber: 0

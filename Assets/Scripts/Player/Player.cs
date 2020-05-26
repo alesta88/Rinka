@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
     [Header( "Death" )]
     [SerializeField] float m_deathIlluminationRadius;
     [SerializeField] Color m_deathColor;
+    [SerializeField] Color m_clearColor;
     [SerializeField] Animator m_deathAnim;
     [SerializeField] SpriteRenderer m_deathSpriteRenderer;
     [Header( "----------------------------------------" )]
@@ -93,23 +94,26 @@ public class Player : MonoBehaviour {
 
     void OnPlayerConsumedOrb( OrbView orb ) {
         Illuminate();
+        Debug.Log("ORBDATA " + orb.Data);
         StageMgr.Instance.ConsumedOrbsInStage++;
         SetWispSprite( orb.Data );
+        
     }
 
     public void SetWispSprite( OrbData orbData ) {
+        
         m_wispSprite.sprite = orbData.WispSprite;
         m_wispIllumination.sprite = orbData.WispIlluminationSprite;
     }
 
-    public void SetSkinSprite(GameObject skinData)
+    public void SetSkinSprite(GameObject skinData) 
     {
         m_skinObj = skinData;
         m_skinsprite.sprite = skinData.GetComponent<SpriteRenderer>().sprite;
         Transform mySkin = this.gameObject.transform.Find("Skin");
         GameObject.Destroy(mySkin.gameObject);
         GameObject myNewSkin = Instantiate(skinData, this.transform.position, this.transform.rotation);
-        myNewSkin.transform.parent = this.gameObject.transform;
+        myNewSkin.transform.parent = this.gameObject.transform;// mySkin;// 
         myNewSkin.name = "Skin";
          
     }
@@ -251,7 +255,8 @@ public class Player : MonoBehaviour {
 
     void OnDie() {
         m_rb.simulated = false;
-        m_deathAnim.SetTrigger("play_death");
+     //   m_deathAnim.SetTrigger("play_death");
+        m_deathAnim.SetTrigger("play_clear");
         m_wispSprite.enabled = false;
         m_wispInnerGlow.enabled = false;
         m_wispIllumination.transform.localScale = Vector3.one * m_deathIlluminationRadius;
@@ -267,17 +272,17 @@ public class Player : MonoBehaviour {
 
     void OnClear()
     {
-        Debug.Log("ClearScene!");
-        m_rb.simulated = false;
-      //  m_deathAnim.SetTrigger("play_death");
-        m_wispSprite.enabled = false;
-        m_wispInnerGlow.enabled = false;
-        m_wispIllumination.transform.localScale = Vector3.one * m_deathIlluminationRadius;
-        m_wispIllumination.color = m_deathColor;
-        m_movePlayerAction = () => { };
+        Debug.Log("ClearScene!"); 
+      //  m_rb.simulated = false;
+        //m_deathAnim.SetTrigger("play_clear");
+        ////m_wispSprite.enabled = false;
+        ////m_wispInnerGlow.enabled = false;
+        //m_wispIllumination.transform.localScale = Vector3.one * m_deathIlluminationRadius;
+        //m_wispIllumination.color = m_clearColor;
+        //m_movePlayerAction = () => { };
 
        // Analytics.CustomEvent(Define.AnalyticsEvent.FULL_AD_START);
-        m_playTime = 0f;
+       // m_playTime = 0f;
     }
 
     public void PlayInnerGlowTween( bool isOn ) {
@@ -325,24 +330,64 @@ public class Player : MonoBehaviour {
         }
         else if (other.tag == "Finish")
         {
-           // Destroy(other.gameObject);
+            // Destroy(other.gameObject);
+
+            m_illuminateSeq?.Kill();
+            m_minIlluminateRadius = 1f;
+            m_wispIllumination.transform.localScale = new Vector3(1f,1f,1f);
             Debug.Log("AAAAAAAAAAAAAAAAAAAAAAA");
-            GameModel.Score.Value += 10;
+          //  GameModel.Score.Value += 10;
+            GameModel.Score.Value += GameModel.Stage.Value.PointsPerOrb*2;
             AudioMgr.Instance.PlayGetOrb();
+            other.GetComponent<Animator>().SetTrigger("play_fly");
+            m_wispIllumination.sprite = other.GetComponent<FlyToPlayer>().wispSprite;// orbData.WispIlluminationSprite;
+          //  MessageBroker.Default.Publish(new ConsumeOrbEvent(other.GetComponent<OrbView>()));
             //StartCoroutine(ExecuteAfterTime2(0.5f));
         }
+        else
+        if (other.tag == "reload")
+        {
+            this.m_minIlluminateRadius = 0.2f;
+            m_illuminateSeq.Play();
+            m_minIlluminateRadius = 0.2f;
+            m_wispSprite.color = Color.white;
+            Debug.Log("reload " + m_minIlluminateRadius);
+        }
+        else
 
         if (other.tag == "Respawn")
         {
+            this.m_minIlluminateRadius = 0.2f;
+            m_illuminateSeq.Play();
+            m_minIlluminateRadius = 0.2f;
+            m_wispSprite.color = Color.white;
             // MessageBroker.Default.Publish(new ClearStageEvent());
             GameModel.GameState.Value = Define.GameState.Clear;
             GameModel.StageWhenClear.Value = null;
+            StageMgr.Instance.StagesCount++;
             StageMgr.Instance.ConsumedOrbsInStage = 0;
-            Debug.Log("BBBBBBBBBBBBBBBBBBB");
+            StageMgr.Instance.isStageClear = true;
+            Debug.Log("BBBBBBBBBBBBBBBBBBB "+m_minIlluminateRadius);
         }
-        if (other.tag == Define.Tag.CLEAR)
+        /////////////////////////////////////////////newworld
+        if (other.tag == "NewWorld")
+        {
+            StageMgr.Instance.StagesCount=0;
+        }
+       
+
+            if (other.tag == Define.Tag.CLEAR)
         {
             MessageBroker.Default.Publish(new ClearStageEvent());
+        }
+        if (other.tag == "BonusText")
+        {
+            StageMgr.Instance.currentchunk_bonustext.BonusText.gameObject.SetActive(true);
+            Debug.Log("touch");
+        }
+        if (other.tag == "noText")
+        {
+            StageMgr.Instance.currentchunk_bonustext.BonusText.gameObject.SetActive(false);
         }
     }
 

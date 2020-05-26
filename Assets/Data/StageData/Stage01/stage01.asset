@@ -24,3 +24,5 @@ MonoBehaviour:
   Chunks:
     array:
     - {fileID: 11400000, guid: c48daf6d81c70f745aa59909a06cd524, type: 2}
+    - {fileID: 11400000, guid: db8cae3fb10578a408fcf512508c927b, type: 2}
+    - {fileID: 11400000, guid: 36cb17d41f9226148b51a842ac8327ca, type: 2}

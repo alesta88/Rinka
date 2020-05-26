@@ -9,6 +9,10 @@ TagManager:
   - player
   - distance_mark
   - wall
+  - clear
+  - BonusText
+  - noText
+  - reload
   layers:
   - Default
   - TransparentFX

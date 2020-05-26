@@ -14,8 +14,8 @@ public class FlyToPlayer : MonoBehaviour {
     int colCnt1 = 0;
     public GameObject ps_child;
     public Color myColor;
-
-
+    public Sprite wispSprite;
+    [SerializeField] Animator m_flyhAnim;
 
     void Awake()
     {
@@ -28,7 +28,7 @@ public class FlyToPlayer : MonoBehaviour {
         njhf = FindObjectOfType<Player>();
         t = Random.Range(5, 8);
         ps_child.SetActive(false);
-        changeSpeed = 0.2f;
+        changeSpeed = 0.1f;
        
     }
     private void Update()
@@ -63,7 +63,7 @@ public class FlyToPlayer : MonoBehaviour {
     {
        Debug.Log("asasasasasas"+ this.myColor);// collision.gameObject.GetComponent<SpriteRenderer>().color);
         touch = 1;
-        
+        m_flyhAnim.SetTrigger("play_fly");
         Destroy(this.gameObject, 1f);
         //Color.cyan; //new Color(0f, 0f, 0f, 1f); ;
         
@@ -81,6 +81,12 @@ public class FlyToPlayer : MonoBehaviour {
             , changeSpeed);
         this.GetComponent<SpriteRenderer>().enabled = false;
         njhf.m_wispSprite.GetComponent<SpriteRenderer>().color = this.myColor;
+        /////////////
+        //var skinskin=njhf.transform.Find("Skin");
+        //Debug.LogError(skinskin.childCount);
+        //ParticleSystem.MainModule settings = skinskin.GetComponentInChildren<ParticleSystem>().main; 
+        //settings.startColor = new ParticleSystem.MinMaxGradient(myColor);
+            ///////////// 
         if (njhf.transform.localScale.x <= 1.5f)
         {
             njhf.transform.localScale = new Vector3(njhf.transform.localScale.x + 0.1f, njhf.transform.localScale.y + 0.1f, njhf.transform.localScale.z + 0.1f);//new Vector3(1.15f,1.15f,1.15f);
@@ -95,5 +101,11 @@ public class FlyToPlayer : MonoBehaviour {
         this.GetComponent<SpriteRenderer>().enabled = false;
     }
 
+    //void findChildrens(Transform obj, Color newcolor)
+    //{
+    //    ParticleSystem.MainModule settings = obj.GetComponentInChildren<ParticleSystem>().main;
+    //    settings.startColor = new ParticleSystem.MinMaxGradient(newcolor);
+    //    var newobj = obj.GetComponentsInChildren<ParticleSystem>();
+    //}
 
 }

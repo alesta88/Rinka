@@ -45,14 +45,14 @@ public class GenerateWalls : MonoBehaviour {
         BorderTopObject.transform.parent = gameObject.transform;
         BorderBottomObject.transform.parent = gameObject.transform;
 
-        
+
 
         if (GameModel.StageWhenClear.Value == null)//(GameModel.Stage.Value.Difficulty!=9)
         {
             Spawner();
         }
         else
-        {
+        { 
             ParticleSpawner();
         }
     }
@@ -135,6 +135,7 @@ public class GenerateWalls : MonoBehaviour {
         int min; 
         int max;
         StCount = StageMgr.Instance.StagesCounter;
+
         if (SpawnTopObject.Length>=StCount+SpawnTopObject.Length/2)
         {
             min = StCount-1;
@@ -152,9 +153,9 @@ public class GenerateWalls : MonoBehaviour {
         {
             max = SpawnTopObject.Length-1;
         }
-        Debug.Log("min " + min + " max " + max+" size "+ SpawnTopObject.Length+" size/2 "+ SpawnTopObject.Length/2+" stages counter "+ StCount);
+    //    Debug.Log("min " + min + " max " + max+" size "+ SpawnTopObject.Length+" size/2 "+ SpawnTopObject.Length/2+" stages counter "+ StCount);
         randomINT = Random.Range(min, max);//RandomExcept(min, max, randomINT);//
-        Debug.Log("random int " + randomINT);
+     //   Debug.Log("random int " + randomINT);
         SpriteWidthScale = SpawnTopObject[randomINT].GetComponent<SpriteRenderer>().sprite.texture.width;
         SpriteHeightScale = SpawnTopObject[randomINT].GetComponent<SpriteRenderer>().sprite.texture.height;
         //Debug.Log("W " + SpriteWidthScale + " H " + SpriteHeightScale);
@@ -215,7 +216,7 @@ public class GenerateWalls : MonoBehaviour {
        if(ParticleCount!=0)
         for (int i = 0; i <= ParticleCount; i++)
         {
-            float spawnX = Random.Range(dataWidth-2.7f, dataWidth+3.2f);
+            float spawnX = Random.Range(dataWidth-0.7f, dataWidth+3f);
             float spawnY = Random.Range(dataHeight-0.4f, dataHeight+0.4f);
             GameObject spawnParticle = Instantiate(SpawnParticles[Random.Range(0,4)], new Vector3(spawnX,spawnY,0f), Quaternion.identity);
             spawnParticle.transform.parent = gameObject.transform;

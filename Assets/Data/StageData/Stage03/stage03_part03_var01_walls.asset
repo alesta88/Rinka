@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -17,10 +18,12 @@ MonoBehaviour:
   ItemSpawnAreaSprite: {fileID: 21300000, guid: b4514890875814485a9b3c1f29d2e556,
     type: 3}
   BackgroundData: {fileID: 11400000, guid: 063e4af01fb6ae54b88753b0500aacf0, type: 2}
-  WallObject: {fileID: 1076570313804336, guid: 7eec10c4ae680b64188e45249462cb3b, type: 2}
+  WallObject: {fileID: 1076570313804336, guid: 7eec10c4ae680b64188e45249462cb3b, type: 3}
   PlayerSpawnPosition: {x: -2.85, y: 0.19}
   MinOrbDistance: 0.5
   MaxOrbDistance: 0.85
   MinOrbCount: 6
   MaxOrbCount: 8
   StageGenerate: {fileID: 11400000, guid: e4ad708ad643fce45a712f47f8667eb7, type: 2}
+  rotate_value: 0
+  stageColor: {r: 1, g: 1, b: 1, a: 1}

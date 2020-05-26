@@ -6,9 +6,15 @@ public class PlayerDeathEvent : IGameEvent {
     public PlayerDeathEvent() {
         GameModel.PlayerLives.Value -= 1;
         Debug.Log("LIVES " + GameModel.PlayerLives.Value);
-        GameModel.StageWhenDied.Value = StageMgr.Instance.CurrentStage;//StageMgr.Instance.ClearNowStage; //
-       // GameModel.StageC.Value = StageMgr.Instance.ClearMetaData;
-    //alestasns    SnsMgr.Instance.ReportScore();
+
+        StageMgr.Instance.isStageClear = false;
+
+      //alestastages  GameModel.StageWhenDied.Value = StageMgr.Instance.CurrentStage;//StageMgr.Instance.ClearNowStage; //
+        GameModel.StageWhenDied.Value = GameModel.Stage.Value.Chunks[0];
+
+     //   GameModel.StageWhenClear.Value = StageMgr.Instance.CurrentStage; 
+        // GameModel.StageC.Value = StageMgr.Instance.ClearMetaData;
+        //alestasns    SnsMgr.Instance.ReportScore();
         AudioMgr.Instance.PlayDeath();
         GameModel.CumulativeDistance.Value += GameModel.CurrentLifeDistance.Value;
 

@@ -20,7 +20,7 @@ MonoBehaviour:
   Difficulty: 5
   PointsPerOrb: 100
   OrbClearCount: 10
-  StageNumber: 5
+  StageNumber: 0
   Chunks:
     array:
     - {fileID: 11400000, guid: e78005a8a4fba3e488fd5870eaffc61c, type: 2}

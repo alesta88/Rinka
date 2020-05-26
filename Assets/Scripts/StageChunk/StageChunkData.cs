@@ -23,6 +23,9 @@ public GameObject WallObject;
 
     public float rotate_value;
    // public GameObject FinishMark;
+   public Color stageColor;
+
+    public int stageNumber;
 }
 
 [Serializable]

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf66f120bd1fd34abe4f14a993fe95c, type: 3}
+  m_Name: stage_clear_part03
+  m_EditorClassIdentifier: 
+  Difficulty: 5
+  LowerEntryPosition: {x: -1024, y: 191}
+  LowerExitPosition: {x: 1024, y: 96}
+  ItemSpawnAreaSprite: {fileID: 21300000, guid: b18f7ec81bb6fe041bbfea5580f3157b,
+    type: 3}
+  BackgroundData: {fileID: 11400000, guid: f3d0f77f5dfeca145a8a9822d341d21f, type: 2}
+  WallObject: {fileID: 1837453278468934, guid: 597a96c6a94c6e040a43455b5a550170, type: 3}
+  PlayerSpawnPosition: {x: -2.47, y: 0}
+  MinOrbDistance: 0.03
+  MaxOrbDistance: 0.09
+  MinOrbCount: 0
+  MaxOrbCount: 0
+  StageGenerate: {fileID: 11400000, guid: 055a9a28ec6d96c498c34f81d327e5ca, type: 2}
+  rotate_value: 0
+  stageColor: {r: 0.41509432, g: 0.17034532, b: 0.19029401, a: 1}

@@ -47,6 +47,7 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
             LoadScene(Define.Scene.STAGESELECTION);
         }
         // ステージ選択画面から遷移
+        // StageSel => 
         else if (prevState == Define.GameState.StageSelection)
         {
             if (nextState == Define.GameState.Title)
@@ -93,7 +94,8 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
             }
             // ステージ選択広告から遷移
         }
-        else if (prevState == Define.GameState.PlayStageSelectionAd)
+        // Play AD => Play
+        else if (prevState == Define.GameState.PlayStageSelectionAd)  
         {
             if (nextState == Define.GameState.Playing)
             {
@@ -102,6 +104,7 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
             }
             // プレイ画面から遷移
         }
+        // Play => 
         else if (prevState == Define.GameState.Playing)
         {
             if (nextState == Define.GameState.GameOver)
@@ -128,6 +131,7 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
             }
             // Continue画面から遷移
         }
+        // Continue => 
         else if (prevState == Define.GameState.Continue)
         {
             if (nextState == Define.GameState.GameOver)
@@ -170,6 +174,7 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
                 GameModel.GameState.Value = Define.GameState.Playing;
             }
         }
+        // Clear => 
         else if (prevState == Define.GameState.Clear)///////// 
         {
             if (nextState == Define.GameState.GameOver)
@@ -217,6 +222,7 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
             }
             // Continue画面の広告から遷移
         }
+        // Go to Bonus => 
         else if (prevState == Define.GameState.GoToBonus)
         {
             if (nextState == Define.GameState.GameOver)
@@ -267,6 +273,7 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
 
             // Continue画面の広告から遷移
         }
+        // PlayAd => 
         else if (prevState == Define.GameState.PlayContinueAd)
         {
             if (nextState == Define.GameState.Playing)
@@ -276,6 +283,7 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
             }
             // ゲームオバー画面から遷移
         }
+        // GO => StageSel
         else if (prevState == Define.GameState.GameOver && nextState == Define.GameState.StageSelection)
         {
             //alestaads1  RinkaAdvertisementManager.Instance.Refresh();
@@ -292,7 +300,7 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
             LoadScene(Define.Scene.STAGESELECTION);
             GameModel.PlayerLives.Value = Define.PLAYER_LIVES_PER_GAME;
         }
-
+        // Skin => StageSel
         else if (prevState == Define.GameState.Skin)
         {
             if (nextState == Define.GameState.StageSelection)
@@ -345,7 +353,25 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
 
     /// <summary>
     /// Continue1画面→プレイ画面の切替
-    /// </summary>
+    /// </summary> 
+    //void ContinueToPlayGame1() //Continue to another WORLD alestaworld
+    //{
+    //    var i  = GameModel.Stage.Value.StageNumber;
+    //   // metadata = m_stageFlow.Stages.GetValue();
+    //    UnloadScene(Define.Scene.CONTINUE);
+    //    UnloadScene(Define.Scene.GAMEOVER);
+    //    UnloadScene(Define.Scene.CONTINUE1);
+    //    UnloadScene(Define.Scene.GOTOBONUS);
+    //    Debug.Log("abir1"+i );
+
+    //    GameModel.Stage.Value = StageMgr.Instance.m_stageFlow.Stages[i]; 
+    //    StageMgr.Instance.InitSpawnStage(GameModel.Stage.Value //StageMgr.Instance.m_stageFlow.Stages[i + 1] //m_stageFlow.Stages[Mathf.Min(i + 1, 5)]   //m_stageFlow.Stages[i+1] //
+    //        , onFinish: (player) => {
+    //            player.Move.Value = Player.MoveState.Glide;
+    //            GameModel.GameState.Value = Define.GameState.UnpauseCountdown;
+    //        }); 
+    //}
+
     void ContinueToPlayGame1()
     {
         var i  = GameModel.Stage.Value.StageNumber;
@@ -356,8 +382,8 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
         UnloadScene(Define.Scene.GOTOBONUS);
         Debug.Log("abir1"+i );
         
-        GameModel.Stage.Value = StageMgr.Instance.m_stageFlow.Stages[i]; 
-        StageMgr.Instance.InitSpawnStage(GameModel.Stage.Value //StageMgr.Instance.m_stageFlow.Stages[i + 1] //m_stageFlow.Stages[Mathf.Min(i + 1, 5)]   //m_stageFlow.Stages[i+1] //
+      //  GameModel.Stage.Value = StageMgr.Instance.m_stageFlow.Stages[i-1]; //alestaworld
+        StageMgr.Instance.InitSpawnStage(GameModel.StageC.Value //StageMgr.Instance.m_stageFlow.Stages[i + 1] //m_stageFlow.Stages[Mathf.Min(i + 1, 5)]   //m_stageFlow.Stages[i+1] //
             , onFinish: (player) => {
                 player.Move.Value = Player.MoveState.Glide;
                 GameModel.GameState.Value = Define.GameState.UnpauseCountdown;

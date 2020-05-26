@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -19,8 +20,11 @@ MonoBehaviour:
   Difficulty: 9
   PointsPerOrb: 4
   OrbClearCount: 395
+  StageNumber: 5
   Chunks:
     array:
     - {fileID: 11400000, guid: 7f3c1d3919a7f8c4d9929b63a4d8b9a6, type: 2}
-    - {fileID: 11400000, guid: 7f3c1d3919a7f8c4d9929b63a4d8b9a6, type: 2}
-    - {fileID: 11400000, guid: 7f3c1d3919a7f8c4d9929b63a4d8b9a6, type: 2}
+    - {fileID: 11400000, guid: 7452e2501ae2b3741b42308014347184, type: 2}
+    - {fileID: 11400000, guid: 14f1a2d3ec9391a4789be16e9760b46d, type: 2}
+    - {fileID: 11400000, guid: a9ea52b9333103147bbad00d214530a2, type: 2}
+    - {fileID: 11400000, guid: c7c673ebc98ab904ba2b8989b6f7f612, type: 2}

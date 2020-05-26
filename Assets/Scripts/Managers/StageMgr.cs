@@ -21,14 +21,19 @@ public class StageMgr : MonoSingleton<StageMgr> {
     public StageMetaData ClearMetaData;
 
     public Queue<StageChunkView> m_viewQueue = new Queue<StageChunkView>();
-    const int MAX_CHUNKS = 10;
+    const int MAX_CHUNKS = 3;//alesta
     bool m_isSpawnPlayer => m_viewQueue.Count == 1;
     StageChunkPool m_pool;
 
-    public int StagesCounter;
+    public int StagesCounter;//chunks in stage
+    public int StagesCount;//stages in level
+    public StageChunkView currentchunk_bonustext;
+
+    public bool isStageClear;
 
     void Awake() {
         m_pool = new StageChunkPool( m_chunkViewPrefab );
+
     }
 
     public void InitSpawnStage( Action<Player> onFinish = null ) {
@@ -58,11 +63,24 @@ public class StageMgr : MonoSingleton<StageMgr> {
         var currChunk = m_viewQueue.LastOrDefault();
         var nextChunk = m_pool.Rent();
         m_viewQueue.Enqueue( nextChunk );
-        if (m_viewQueue.Count > MAX_CHUNKS)
+        Debug.Log("STAGE " + GameModel.Stage.Value);
+        Debug.Log("STAGEC " + GameModel.StageC.Value);
+        if (m_viewQueue.Count > MAX_CHUNKS) 
         {
             currChunk.FinishMark.gameObject.SetActive(true);
+            currentchunk_bonustext = currChunk;
+            //currentchunk_bonustext.gameObject.SetActive(true);
+            //    currChunk.BonusText.gameObject.SetActive(true);
+            Debug.Log("hgsogho"+m_viewQueue.Count);
             var prevChunk = m_viewQueue.Dequeue();
             m_pool.Return(prevChunk);
+        }
+        else
+        {
+            Debug.Log("hgsogho2" + m_viewQueue.Count);
+            if(currChunk!=null) 
+            currChunk.FinishMark.gameObject.SetActive(false);
+           //  currChunk.BonusText.gameObject.SetActive(false);
         }
 
         StageChunkData nextChunkData = GetNextStageChunk();
@@ -83,27 +101,73 @@ public class StageMgr : MonoSingleton<StageMgr> {
         UpdateCurrentStage();
 
         StageChunkData nextStageChunk = null;
-        // 死んだ場合、同じステージ部分からスタート
-        if( GameModel.StageWhenDied.Value != null ) {
-            nextStageChunk = GameModel.StageWhenDied.Value;
-            GameModel.SpawnStageChunk.Value = nextStageChunk;
-            GameModel.StageWhenDied.Value = null;
+        
+        if (isStageClear == false)
+        {// 死んだ場合、同じステージ部分からスタート
+            if (GameModel.StageWhenDied.Value != null)
+            {
+                nextStageChunk = GameModel.StageWhenDied.Value;
+                Debug.Log("DIEDSTAGE");
+                GameModel.SpawnStageChunk.Value = nextStageChunk;
+                GameModel.StageWhenDied.Value = null;
 
-            StagesCounter = 0;
+                StagesCounter = 0;
 
-            // 死んでいなくて最初プレイの場合、、最初のステージ部分スタート
-        }
-        else if (m_isSpawnPlayer)
-        {
-            //nextStageChunk = GameModel.Stage.Value.Chunks[0];
-            //GameModel.SpawnStageChunk.Value = nextStageChunk;
-            nextStageChunk = GameModel.Stage.Value.Chunks.Random();
-            StagesCounter = 0;
-            // それ以外は、ランダムステージ部分へ遷移
+                // 死んでいなくて最初プレイの場合、、最初のステージ部分スタート
+            }
+            else if (GameModel.StageWhenClear.Value != null)
+            {
+                //   nextStageChunk = GameModel.StageWhenClear.Value;
+                nextStageChunk = ClearMetaData.Chunks[GameModel.Stage.Value.Difficulty - 1];
+                GameModel.SpawnStageChunk.Value = nextStageChunk;
+                //   GameModel.StageWhenClear.Value = null; 
+
+                StagesCounter = 0;
+
+                // 死んでいなくて最初プレイの場合、、最初のステージ部分スタート
+            }
+            else if (m_isSpawnPlayer)
+            {
+                nextStageChunk = GameModel.Stage.Value.Chunks[0];//////////////////////////////////////////////////////////////////
+                GameModel.SpawnStageChunk.Value = nextStageChunk;//////////////////////////////////////////////////////////////////
+            Debug.Log("MYNEWSTAGE");                                       //   nextStageChunk = GameModel.Stage.Value.Chunks.Random();
+                StagesCounter = 0;
+                // それ以外は、ランダムステージ部分へ遷移
+            }
+            else
+            {
+                var i = CurrentStage.stageNumber;
+                nextStageChunk = GameModel.Stage.Value.Chunks[i];
+                //  nextStageChunk = GameModel.Stage.Value.Chunks.Random();
+            }
         }
         else
         {
-            nextStageChunk = GameModel.Stage.Value.Chunks.Random();
+            if (GameModel.StageWhenDied.Value != null)
+            {
+                nextStageChunk = GameModel.StageWhenDied.Value;
+                GameModel.SpawnStageChunk.Value = nextStageChunk;
+                GameModel.StageWhenDied.Value = null;
+
+                StagesCounter = 0;
+
+                // 死んでいなくて最初プレイの場合、、最初のステージ部分スタート
+            }
+            else
+
+            {
+                //  var i = CurrentStage.stageNumber;
+                var i = StageMgr.Instance.StagesCount;
+                nextStageChunk = GameModel.Stage.Value.Chunks[i];
+                //  nextStageChunk = GameModel.Stage.Value.Chunks.Random();
+
+                //   nextStageChunk = GameModel.Stage.Value.Chunks[0];//////////////////////////////////////////////////////////////////
+                GameModel.SpawnStageChunk.Value = nextStageChunk;//////////////////////////////////////////////////////////////////
+                Debug.Log("MYNEWSTAGE2");                                       //   nextStageChunk = GameModel.Stage.Value.Chunks.Random();
+                StagesCounter = 0;
+                isStageClear = false;
+            }
+           
         }
 
         return nextStageChunk;
@@ -118,6 +182,8 @@ public class StageMgr : MonoSingleton<StageMgr> {
         for (int i = 0; i < m_stageFlow.Stages.Length; i++)
         {
             var stage = m_stageFlow.Stages[i];///////////////////// var stage = m_stageFlow.Stages[i];
+            Debug.Log("MyStages " + stage);
+            Debug.Log(ClearMetaData.Chunks[1]);
         //if (/*stage == GameModel.Stage.Value &&*/ ConsumedOrbsInStage >= stage.OrbClearCount)
         //    {
         //        //int nextStageIndex = Mathf.Min(i + 1, m_stageFlow.Stages.Length - 1);

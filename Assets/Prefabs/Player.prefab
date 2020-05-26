@@ -155,8 +155,13 @@ MonoBehaviour:
   m_glideVector: {x: 16, y: 160}
   m_glideDuration: 1.5
   m_fallVector: {x: 6, y: -10}
+  m_leftVector: {x: 0, y: 0}
+  m_LeftDuration: 0
+  m_rightVector: {x: 0, y: 0}
+  m_rightDuration: 0
   m_deathIlluminationRadius: 1
   m_deathColor: {r: 0.6415094, g: 0.0514418, b: 0.0514418, a: 1}
+  m_clearColor: {r: 0.33490568, g: 0.3832555, b: 1, a: 1}
   m_deathAnim: {fileID: 95212716449795642}
   m_deathSpriteRenderer: {fileID: 212196227062110456}
   m_innerGlowOnSpeed: 0.5

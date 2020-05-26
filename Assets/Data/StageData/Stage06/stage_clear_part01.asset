@@ -15,14 +15,15 @@ MonoBehaviour:
   Difficulty: 5
   LowerEntryPosition: {x: -1024, y: 191}
   LowerExitPosition: {x: 1024, y: 96}
-  ItemSpawnAreaSprite: {fileID: 21300000, guid: b18f7ec81bb6fe041bbfea5580f3157b,
+  ItemSpawnAreaSprite: {fileID: 21300000, guid: 34202a628b4e8b546817a812de7722c9,
     type: 3}
-  BackgroundData: {fileID: 11400000, guid: 5f248b8f4cf8940489aeeff0db7ac4af, type: 2}
+  BackgroundData: {fileID: 11400000, guid: 03bd9303574df0d4ab04a504f2f73a69, type: 2}
   WallObject: {fileID: 1837453278468934, guid: 597a96c6a94c6e040a43455b5a550170, type: 3}
   PlayerSpawnPosition: {x: -2.47, y: 0}
   MinOrbDistance: 0.03
   MaxOrbDistance: 0.09
-  MinOrbCount: 0
-  MaxOrbCount: 0
+  MinOrbCount: 10
+  MaxOrbCount: 15
   StageGenerate: {fileID: 11400000, guid: 055a9a28ec6d96c498c34f81d327e5ca, type: 2}
   rotate_value: 0
+  stageColor: {r: 0.33228016, g: 0.525284, b: 0.5377358, a: 1}

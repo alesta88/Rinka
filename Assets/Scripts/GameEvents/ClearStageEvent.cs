@@ -7,14 +7,14 @@ public class ClearStageEvent : IGameEvent
     public ClearStageEvent()
     {
         //GameModel.PlayerLives.Value += 10;
-            GameModel.GameState.Value = Define.GameState.GoToBonus; ;///
+        //    GameModel.GameState.Value = Define.GameState.GoToBonus; ;/// 
         Debug.Log("STAGECLEAREVENT!!"+ GameModel.GameState.Value);
-        GameModel.StageWhenDied.Value = StageMgr.Instance.ClearNowStage;
+        //GameModel.StageWhenDied.Value = StageMgr.Instance.ClearNowStage;
         GameModel.StageWhenClear.Value = StageMgr.Instance.ClearNowStage;
-        GameModel.StageC.Value = StageMgr.Instance.ClearMetaData;
+    //    GameModel.StageC.Value = StageMgr.Instance.ClearMetaData;
         var i = GameModel.Stage.Value.StageNumber;
      //   GameModel.Stage.Value = StageMgr.Instance.m_stageFlow.Stages[i]; 
-        Debug.Log("!!!" + GameModel.StageWhenDied.Value.Difficulty);
+     //   Debug.Log("!!!" + GameModel.StageWhenDied.Value.Difficulty);
    //alestasns     SnsMgr.Instance.ReportScore();
         AudioMgr.Instance.PlayDeath();
         GameModel.CumulativeDistance.Value += GameModel.CurrentLifeDistance.Value;

@@ -18,7 +18,7 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
         Debug.Log("ZROT" + zrot+"  " + mycam_rotation);
         if (mycam_rotation==0f&&zrot!=0)
         {
-            //m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, -90f, Space.World); 
+           m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, -45f, Space.World); 
             composer.m_DeadZoneHeight = 0.35f;
             //PlayerMgr.Instance.PlayerInstance.m_flyVector.x = 50f;
             //PlayerMgr.Instance.PlayerInstance.m_flyVector.y = 180f;
@@ -57,7 +57,7 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
 
     public void Update()
     {
-        m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, +0.05f, Space.World);
+       // m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, +0.05f, Space.World);
     }
 
 }

@@ -26,3 +26,4 @@ MonoBehaviour:
   MaxOrbCount: 100
   StageGenerate: {fileID: 11400000, guid: 73685338ce8de6b4ebc47a48379e74ce, type: 2}
   rotate_value: -90
+  stageColor: {r: 1, g: 1, b: 1, a: 1}
