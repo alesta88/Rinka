@@ -4,11 +4,12 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 249d114262233a84f9ae3e5894a088cb, type: 3}
-  m_Name: Stage4 Generate Data
+  m_Name: Stage5 Generate Data
   m_EditorClassIdentifier: 
-  WallObject: {fileID: 1994344734119906, guid: 07837f3c67e094644a6b47c988315269, type: 2}
+  WallObject: {fileID: 1994344734119906, guid: 077a6fff06df94744958c698f5140a0c, type: 3}

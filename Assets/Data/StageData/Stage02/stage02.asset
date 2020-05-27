@@ -17,7 +17,7 @@ MonoBehaviour:
   DifficultyIndicatorImage: {fileID: 21300000, guid: 70852cd61eef3a04fa9de984480ce490,
     type: 3}
   IsShowAd: 0
-  Difficulty: 2
+  Difficulty: 4
   PointsPerOrb: 5
   OrbClearCount: 10
   StageNumber: 2
@@ -26,6 +26,3 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7c01720afe758cb4d89eb5a69c5ebf90, type: 2}
     - {fileID: 11400000, guid: 13a54a7839d86e04dab287a938eafd39, type: 2}
     - {fileID: 11400000, guid: fca47a5ce77537e41918f167757fc762, type: 2}
-    - {fileID: 11400000, guid: 1d705e632fd0c9642a4efd1971f5464a, type: 2}
-    - {fileID: 11400000, guid: 61be73c195457744db44e7db1a8b207b, type: 2}
-    - {fileID: 11400000, guid: 2fff27b20700b2a43b1ef98da7b01a36, type: 2}

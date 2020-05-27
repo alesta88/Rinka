@@ -40,15 +40,12 @@ public class GenerateWalls : MonoBehaviour {
 
     private void Start()
     {
-        GameObject BorderTopObject = Instantiate(SpawnBorders[0], new Vector3(this.transform.position.x, +0.85f, 0), this.transform.rotation);
-        GameObject BorderBottomObject = Instantiate(SpawnBorders[1], new Vector3(this.transform.position.x, -0.85f, 0), Quaternion.Euler(0f, 0f, 180f));
-        BorderTopObject.transform.parent = gameObject.transform;
-        BorderBottomObject.transform.parent = gameObject.transform;
-
-
-
         if (GameModel.StageWhenClear.Value == null)//(GameModel.Stage.Value.Difficulty!=9)
         {
+            GameObject BorderTopObject = Instantiate(SpawnBorders[0], new Vector3(this.transform.position.x, +0.85f, 0), this.transform.rotation);
+            GameObject BorderBottomObject = Instantiate(SpawnBorders[1], new Vector3(this.transform.position.x, -0.85f, 0), Quaternion.Euler(0f, 0f, 180f));
+            BorderTopObject.transform.parent = gameObject.transform;
+            BorderBottomObject.transform.parent = gameObject.transform;
             Spawner();
         }
         else
@@ -218,7 +215,7 @@ public class GenerateWalls : MonoBehaviour {
         for (int i = 0; i <= ParticleCount; i++)
         {
             float spawnX = Random.Range(dataWidth-0.7f, dataWidth+3f);
-            float spawnY = Random.Range(dataHeight-0.4f, dataHeight+0.4f);
+            float spawnY = Random.Range(dataHeight-1f, dataHeight+2f);
             GameObject spawnParticle = Instantiate(SpawnParticles[Random.Range(0,4)], new Vector3(spawnX,spawnY,0f), Quaternion.identity);
             spawnParticle.transform.parent = gameObject.transform;
         }

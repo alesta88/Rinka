@@ -25,7 +25,7 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
         Debug.Log("ZROT" + zrot+"  " + mycam_rotation);
         if (mycam_rotation==0f&&zrot!=0)
         {
-           m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, -45f, Space.World); 
+           m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, zrot, Space.World); 
             composer.m_DeadZoneHeight = 0.35f;
             //PlayerMgr.Instance.PlayerInstance.m_flyVector.x = 50f;
             PlayerMgr.Instance.PlayerInstance.m_flyVector.x = 35f;
@@ -43,6 +43,22 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
             //PlayerMgr.Instance.PlayerInstance.m_rightVector.x = 10f;
             //PlayerMgr.Instance.PlayerInstance.m_rightVector.y = 150f;
             //PlayerMgr.Instance.PlayerInstance.m_rightDuration = 1f;
+            //if(zrot==90)
+            //{
+            //    //PlayerMgr.Instance.PlayerInstance.m_flyVector.x = 50f;
+            //    //PlayerMgr.Instance.PlayerInstance.m_flyVector.y = 180f;
+            //    //PlayerMgr.Instance.PlayerInstance.m_glideVector.x = 5f;
+            //    //PlayerMgr.Instance.PlayerInstance.m_glideVector.y = 177f;
+            //    //PlayerMgr.Instance.PlayerInstance.m_fallVector.x = -15f;
+            //    //PlayerMgr.Instance.PlayerInstance.m_fallVector.y = 4.5f;
+            //    //PlayerMgr.Instance.PlayerInstance.m_leftVector.x = 5f;
+            //    //PlayerMgr.Instance.PlayerInstance.m_leftVector.y = 200f;
+            //    //PlayerMgr.Instance.PlayerInstance.m_LeftDuration = 10f;
+            //    //PlayerMgr.Instance.PlayerInstance.m_rightVector.x = 10f;
+            //    //PlayerMgr.Instance.PlayerInstance.m_rightVector.y = 150f;
+            //    //PlayerMgr.Instance.PlayerInstance.m_rightDuration = 1f;
+            //}
+
         }
         if (mycam_rotation !=0&&zrot==0)
         {
@@ -50,6 +66,17 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
            // composer.m_DeadZoneHeight = 1f;
             composer.m_DeadZoneHeight = 0.25f;
         }
+        if(zrot==0)
+        {
+            m_cinemachineCam.gameObject.transform.rotation = Quaternion.Euler(0,0,0);
+            PlayerMgr.Instance.PlayerInstance.m_flyVector.x = 17f;
+            PlayerMgr.Instance.PlayerInstance.m_flyVector.y = 215f;
+            PlayerMgr.Instance.PlayerInstance.m_glideVector.x = 16f;
+            PlayerMgr.Instance.PlayerInstance.m_glideVector.y = 160f;
+            composer.m_DeadZoneHeight = 0.35f;
+        }
+
+
         Debug.Log("035");
     }
 
@@ -61,9 +88,18 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
 
     public void Start()
     {
+       // Screen.orientation == ScreenOrientation.Portrait;
         m_cinemachineCam.gameObject.transform.position.Set(0f, 0f, 0f);
         //m_cinemachineCam.gameObject.transform.rotation = Quaternion.Euler(0f,0f,0f);
         //   m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, 0f, Space.Self);
+        if(Screen.orientation== ScreenOrientation.Portrait|| Screen.orientation == ScreenOrientation.PortraitUpsideDown)
+        {
+            m_cinemachineCam.m_Lens.OrthographicSize = 0.8f;
+        }
+        else
+        {
+            m_cinemachineCam.m_Lens.OrthographicSize = 0.48f;
+        }
     }
 
     public void Update()

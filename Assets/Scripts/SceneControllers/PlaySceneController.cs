@@ -16,6 +16,7 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
     [SerializeField] TMP_Text m_scoreText;
     [SerializeField] TMP_Text m_pauseText;
     [SerializeField] TMP_Text m_countdownText;
+    [SerializeField] public TMP_Text m_countdownBonusText;
     [SerializeField] Image m_pauseFilterImage;
     [SerializeField] Image m_pauseIcon;
     [SerializeField] Image m_playIcon;

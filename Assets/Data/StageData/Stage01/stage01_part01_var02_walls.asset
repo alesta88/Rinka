@@ -15,9 +15,9 @@ MonoBehaviour:
   Difficulty: 0
   LowerEntryPosition: {x: -1024, y: 191}
   LowerExitPosition: {x: 1024, y: 96}
-  ItemSpawnAreaSprite: {fileID: 21300000, guid: 7df22d490ce5f4d8bb88f679e636e9a8,
+  ItemSpawnAreaSprite: {fileID: 21300000, guid: b9c7a2609b0323240bea12de20e82d53,
     type: 3}
-  BackgroundData: {fileID: 11400000, guid: f3d0f77f5dfeca145a8a9822d341d21f, type: 2}
+  BackgroundData: {fileID: 11400000, guid: 4fd38a868bc421a4a966efadeba9bd76, type: 2}
   WallObject: {fileID: 1475389284858684, guid: 14dd52c822ca852448c0b39d63e12b33, type: 3}
   PlayerSpawnPosition: {x: -2.38, y: 0}
   MinOrbDistance: 0.2

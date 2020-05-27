@@ -34,40 +34,48 @@ public class FlyToPlayer : MonoBehaviour {
     private void Update()
     {
         // Random.Range(0f, 1.5f);
-        if(njhf.transform.localScale.x>=1f)
-        {
-            njhf.transform.localScale = new Vector3(njhf.transform.localScale.x - 0.01f, njhf.transform.localScale.y - 0.01f, njhf.transform.localScale.z - 0.01f);
-        }
-      
-        colCnt1 = Physics2D.OverlapCircleNonAlloc(myPlayer.transform.position, 3f, m_colOverlaps, m_wallLayer);
-       if(touch>=1)
-        {
-            
-            this.transform.position = Vector3.Lerp(transform.position
-            , myPlayer.transform.position
-            , changeSpeed);
-            //this.GetComponent<SpriteRenderer>().enabled = false;
-            // PlayerMgr.Instance.PlayerInstance.max
-            //     changeSpeed += 0.1f;
-              StartCoroutine(ExecuteAfterTime2(1f));
-            StartCoroutine(ExecuteAfterTime(0.5f));
-           // changeSpeed += 0.05f;
-          njhf.m_minIlluminateRadius= 1f;
-          //  njhf.m_wispIllumination.transform.localScale = Vector3.one * 2f;
 
+        if(PlayerMgr.Instance.PlayerInstance.flytoplayerevent==true)
+        {
+            if (njhf.transform.localScale.x >= 1f)
+            {
+                njhf.transform.localScale = new Vector3(njhf.transform.localScale.x - 0.01f, njhf.transform.localScale.y - 0.01f, njhf.transform.localScale.z - 0.01f);
+            }
+
+            colCnt1 = Physics2D.OverlapCircleNonAlloc(myPlayer.transform.position, 3f, m_colOverlaps, m_wallLayer);
+            if (touch >= 1)
+            {
+
+                this.transform.position = Vector3.Lerp(transform.position
+                , myPlayer.transform.position
+                , changeSpeed);
+                //this.GetComponent<SpriteRenderer>().enabled = false;
+                // PlayerMgr.Instance.PlayerInstance.max
+                //     changeSpeed += 0.1f;
+                StartCoroutine(ExecuteAfterTime2(1f));
+                StartCoroutine(ExecuteAfterTime(0.5f));
+                // changeSpeed += 0.05f;
+                njhf.m_minIlluminateRadius = 1f;
+                //  njhf.m_wispIllumination.transform.localScale = Vector3.one * 2f;
+
+            }
         }
+        
        
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       Debug.Log("asasasasasas"+ this.myColor);// collision.gameObject.GetComponent<SpriteRenderer>().color);
-        touch = 1;
-        m_flyhAnim.SetTrigger("play_fly");
-        Destroy(this.gameObject, 1f);
-        //Color.cyan; //new Color(0f, 0f, 0f, 1f); ;
-        
-          //  ps_child.SetActive(true);
+        if (PlayerMgr.Instance.PlayerInstance.flytoplayerevent == true)
+        {
+            Debug.Log("asasasasasas" + this.myColor);// collision.gameObject.GetComponent<SpriteRenderer>().color);
+            touch = 1;
+            m_flyhAnim.SetTrigger("play_fly");
+            Destroy(this.gameObject, 1f);
+            //Color.cyan; //new Color(0f, 0f, 0f, 1f); ;
+
+            //  ps_child.SetActive(true);
+        }
     }
 
 

@@ -30,6 +30,7 @@ public class StageMgr : MonoSingleton<StageMgr> {
     public StageChunkView currentchunk_bonustext;
 
     public bool isStageClear;
+    public bool oneclear=false;
 
     void Awake() {
         m_pool = new StageChunkPool( m_chunkViewPrefab );
@@ -48,7 +49,7 @@ public class StageMgr : MonoSingleton<StageMgr> {
         DisplayNextChunk( stageMetaData );
         PlayerMgr.Instance.InstantiatePlayer( onFinish );
         ///////////////////////Rotate camera 45f
-
+         
         Debug.Log("ROTATE" + CurrentStage.rotate_value);
        // if(CurrentStage.rotate_value)
             CameraMgr.Instance.RotateCamera(CurrentStage.rotate_value);
@@ -87,13 +88,13 @@ public class StageMgr : MonoSingleton<StageMgr> {
         Vector2? playerSpawnPosition = m_isSpawnPlayer ? nextChunkData.PlayerSpawnPosition : default( Vector2? );
         nextChunk.Display1( currChunk, nextChunkData, playerSpawnPosition );
         nextChunk.OnHitBoundary = ( col ) => {
-            if( col.tag == Define.Tag.PLAYER && m_viewQueue.Count >= 2 ) {
+            if( col.tag == Define.Tag.PLAYER && m_viewQueue.Count >= 2 ) { 
                 DisplayNextChunk( stage );
                 nextChunk.OnHitBoundary = null;
             }
         };
     }
-
+     
     /// <summary>
     /// 次のステージ部分を取得
     /// </summary>
@@ -118,9 +119,22 @@ public class StageMgr : MonoSingleton<StageMgr> {
             else if (GameModel.StageWhenClear.Value != null)
             {
                 //   nextStageChunk = GameModel.StageWhenClear.Value;
-                nextStageChunk = ClearMetaData.Chunks[GameModel.Stage.Value.Difficulty - 1];
+                //var i = CurrentStage.stageNumber;
+                // nextStageChunk = ClearMetaData.Chunks[GameModel.Stage.Value.Difficulty - 1];
+                Debug.Log("ONECLEAR" + oneclear);
+               if(!oneclear)
+                {
+                    nextStageChunk = ClearMetaData.Chunks[0];
+                    oneclear = true;
+                }
+               else
+                {
+                    nextStageChunk = ClearMetaData.Chunks[1];
+                   // oneclear = false;
+                }
+                
                 GameModel.SpawnStageChunk.Value = nextStageChunk;
-                //   GameModel.StageWhenClear.Value = null; 
+                //  GameModel.StageWhenClear.Value = null; 
 
                 StagesCounter = 0;
 
@@ -136,8 +150,9 @@ public class StageMgr : MonoSingleton<StageMgr> {
             }
             else
             {
-                var i = CurrentStage.stageNumber;
-                nextStageChunk = GameModel.Stage.Value.Chunks[i];
+               // var i = CurrentStage.stageNumber;
+                nextStageChunk = GameModel.Stage.Value.Chunks[0];
+                GameModel.SpawnStageChunk.Value = nextStageChunk;
                 //  nextStageChunk = GameModel.Stage.Value.Chunks.Random();
             }
         }

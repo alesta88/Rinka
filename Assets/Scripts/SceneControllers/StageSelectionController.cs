@@ -47,6 +47,7 @@ public class StageSelectionController : MonoBehaviour, ISceneController {
     void Init() {
         var buttons = m_stageButtonParent.GetComponentsInChildren<StageButton>();
         for( int i=0; i< buttons.Length; i++ ) {
+          //  buttons[i].Init( m_stageData[i].Chunks[1] );
             buttons[i].Init( m_stageData[i] );
         }
 

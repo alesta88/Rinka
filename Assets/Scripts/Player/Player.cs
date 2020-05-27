@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Analytics;
 using UniRx;
 using DG.Tweening;
@@ -67,6 +68,10 @@ public class Player : MonoBehaviour {
     float? m_startPosX;
     float m_playTime;
     public int skinNumber;
+
+    public bool flytoplayerevent;
+    private float mytime;
+    Text counterText;
 
     //***********************************************************
     // 初期化
@@ -138,11 +143,17 @@ public class Player : MonoBehaviour {
         m_rb.velocity = Vector2.zero;
         m_rb.simulated = false;
         m_illuminateSeq.Pause();
+        StopAllCoroutines();
     }
 
     void OnUnpause() {
         m_rb.simulated = true;
         m_illuminateSeq.Play();
+
+        if(flytoplayerevent==true)
+        {
+            StartCoroutine(FlytoPL());
+        }
     }
 
     //***********************************************************
@@ -344,31 +355,31 @@ public class Player : MonoBehaviour {
           //  MessageBroker.Default.Publish(new ConsumeOrbEvent(other.GetComponent<OrbView>()));
             //StartCoroutine(ExecuteAfterTime2(0.5f));
         }
-        else
-        if (other.tag == "reload")
-        {
-            this.m_minIlluminateRadius = 0.2f;
-            m_illuminateSeq.Play();
-            m_minIlluminateRadius = 0.2f;
-            m_wispSprite.color = Color.white;
-            Debug.Log("reload " + m_minIlluminateRadius);
-        }
-        else
+        //else
+        //if (other.tag == "reload")
+        //{
+        //    this.m_minIlluminateRadius = 0.2f;
+        //    m_illuminateSeq.Play();
+        //    m_minIlluminateRadius = 0.2f;
+        //    m_wispSprite.color = Color.white;
+        //    Debug.Log("reload " + m_minIlluminateRadius);
+        //}
+        //else
 
-        if (other.tag == "Respawn")
-        {
-            this.m_minIlluminateRadius = 0.2f;
-            m_illuminateSeq.Play();
-            m_minIlluminateRadius = 0.2f;
-            m_wispSprite.color = Color.white;
-            // MessageBroker.Default.Publish(new ClearStageEvent());
-            GameModel.GameState.Value = Define.GameState.Clear;
-            GameModel.StageWhenClear.Value = null;
-            StageMgr.Instance.StagesCount++;
-            StageMgr.Instance.ConsumedOrbsInStage = 0;
-            StageMgr.Instance.isStageClear = true;
-            Debug.Log("BBBBBBBBBBBBBBBBBBB "+m_minIlluminateRadius);
-        }
+        //if (other.tag == "Respawn")
+        //{
+        //    this.m_minIlluminateRadius = 0.2f;
+        //    m_illuminateSeq.Play();
+        //    m_minIlluminateRadius = 0.2f;
+        //    m_wispSprite.color = Color.white;
+        //    // MessageBroker.Default.Publish(new ClearStageEvent());
+        //    GameModel.GameState.Value = Define.GameState.Clear;
+        //    GameModel.StageWhenClear.Value = null;
+        //    StageMgr.Instance.StagesCount++;
+        //    StageMgr.Instance.ConsumedOrbsInStage = 0;
+        //    StageMgr.Instance.isStageClear = true;
+        //    Debug.Log("BBBBBBBBBBBBBBBBBBB "+m_minIlluminateRadius);
+        //}
         /////////////////////////////////////////////newworld
         if (other.tag == "NewWorld")
         {
@@ -376,18 +387,27 @@ public class Player : MonoBehaviour {
         }
        
 
-            if (other.tag == Define.Tag.CLEAR)
+        if (other.tag == Define.Tag.CLEAR)
         {
             MessageBroker.Default.Publish(new ClearStageEvent());
         }
         if (other.tag == "BonusText")
         {
             StageMgr.Instance.currentchunk_bonustext.BonusText.gameObject.SetActive(true);
-            Debug.Log("touch");
+            StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.gameObject.SetActive(true);
+            counterText = StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.GetComponentInChildren<Text>() as Text;
+
+
+            flytoplayerevent = true;
+            mytime = 25f;
+            StartCoroutine(FlytoPL());
+            
+            //StartCoroutine(ClearEvent(28f));
         }
         if (other.tag == "noText")
         {
             StageMgr.Instance.currentchunk_bonustext.BonusText.gameObject.SetActive(false);
+            
         }
     }
 
@@ -398,5 +418,52 @@ public class Player : MonoBehaviour {
         m_illuminateSeq.Kill();
         m_innerGlowTween.Kill();
     }
-    
+
+    IEnumerator FlytoPL()
+    {
+        StartCoroutine(StartCountdown());
+        yield return new WaitForSeconds(mytime);
+        flytoplayerevent = false;
+        StartCoroutine(ClearEvent(1f));
+        Debug.Log("UNPAUSE "+mytime);
+       
+
+    }
+
+    public IEnumerator StartCountdown()
+    {
+        
+        while (mytime > 0)
+        {
+            var intmytime = (int)mytime;
+            counterText.text = intmytime.ToString() + " to clear";
+            Debug.Log("Countdown: " + counterText.text);
+            yield return new WaitForSeconds(1.0f);
+            mytime--;
+        }
+    }
+    IEnumerator ClearEvent(float time)
+    {
+        
+        this.m_minIlluminateRadius = 0.2f;
+        m_illuminateSeq.Play();
+        m_minIlluminateRadius = 0.2f;
+        m_wispSprite.color = Color.white;
+        this.transform.localScale = new Vector3(1f,1f,1f);
+        Debug.Log("reloadevent " + m_minIlluminateRadius);
+        //StageMgr.Instance.currentchunk_bonustext.gameObject.SetActive(false);
+        counterText.gameObject.SetActive(false);
+        
+
+        GameModel.StageWhenClear.Value = null;
+        StageMgr.Instance.StagesCount++;
+        StageMgr.Instance.ConsumedOrbsInStage = 0;
+        StageMgr.Instance.isStageClear = true;
+        StageMgr.Instance.oneclear = false;
+        Debug.Log("reloadevent2 " + m_minIlluminateRadius);
+        GameModel.GameState.Value = Define.GameState.Clear;
+        yield return new WaitForSeconds(time);
+    }
+
+
 }

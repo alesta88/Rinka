@@ -17,13 +17,14 @@ MonoBehaviour:
   LowerExitPosition: {x: 1024, y: 96}
   ItemSpawnAreaSprite: {fileID: 21300000, guid: b18f7ec81bb6fe041bbfea5580f3157b,
     type: 3}
-  BackgroundData: {fileID: 11400000, guid: 38f1a543af2c5ee45aad0fc5699323cc, type: 2}
+  BackgroundData: {fileID: 11400000, guid: 03bd9303574df0d4ab04a504f2f73a69, type: 2}
   WallObject: {fileID: 1837453278468934, guid: 597a96c6a94c6e040a43455b5a550170, type: 3}
   PlayerSpawnPosition: {x: -2.47, y: 0}
   MinOrbDistance: 0.03
   MaxOrbDistance: 0.09
   MinOrbCount: 0
   MaxOrbCount: 0
-  StageGenerate: {fileID: 11400000, guid: 055a9a28ec6d96c498c34f81d327e5ca, type: 2}
+  StageGenerate: {fileID: 11400000, guid: 27c79d7ffd7e8334999ba0bbcd7293c8, type: 2}
   rotate_value: 0
   stageColor: {r: 0.16300283, g: 0.3490566, b: 0.26529315, a: 1}
+  stageNumber: 0

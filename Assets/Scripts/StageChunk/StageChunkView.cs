@@ -32,6 +32,7 @@ public class StageChunkView : MonoBehaviour {
     public Action<Collider2D> OnHitBoundary;
     public GameObject FinishMark;
     public GameObject BonusText;
+    public GameObject CountdownBonusText;
     public event Action OnReturn = () => { };
 
     List<Vector3> orbPositions;
