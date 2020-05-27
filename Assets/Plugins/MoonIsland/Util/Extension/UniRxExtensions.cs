@@ -10,7 +10,7 @@ public static class UniRxExtensions {
     /// Observableボタンを作成
     /// </summary>
     static public IObservable<PointerEventData> ObservableButton( this GameObject btnObject, Component controller ) {
-   // static public UniRx.IObservable<PointerEventData> ObservableButton( this GameObject btnObject, Component controller ) {
+    //static public UniRx.IObservable<PointerEventData> ObservableButton( this GameObject btnObject, Component controller ) {
         var btnInputArea = btnObject.GetComponent<ButtonInputArea>();
         GameObject btnObj = btnInputArea != null ? btnInputArea.Area.gameObject : btnObject.gameObject;
 

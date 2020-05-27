@@ -4,8 +4,15 @@ using Cinemachine;
 public class CameraMgr : MonoSingleton<CameraMgr> {
     [SerializeField] Camera m_camera;
     [SerializeField] CinemachineVirtualCamera m_cinemachineCam;
+    [SerializeField] float smoothspeed = 0.125f;
+
 
     public void Follow( Transform target ) {
+
+        Vector3 targetposition = target.position;
+        Vector3 smoothestposition = Vector3.Lerp(transform.position, targetposition, smoothspeed);
+        target.position = smoothestposition;
+
         m_cinemachineCam.Follow = target;
         Debug.Log("Target" + target.transform.position);
     }
@@ -21,9 +28,13 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
            m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, -45f, Space.World); 
             composer.m_DeadZoneHeight = 0.35f;
             //PlayerMgr.Instance.PlayerInstance.m_flyVector.x = 50f;
+            PlayerMgr.Instance.PlayerInstance.m_flyVector.x = 35f;
             //PlayerMgr.Instance.PlayerInstance.m_flyVector.y = 180f;
+            PlayerMgr.Instance.PlayerInstance.m_flyVector.y = 200f;
             //PlayerMgr.Instance.PlayerInstance.m_glideVector.x = 5f;
+            PlayerMgr.Instance.PlayerInstance.m_glideVector.x = 8f;
             //PlayerMgr.Instance.PlayerInstance.m_glideVector.y = 177f;
+            PlayerMgr.Instance.PlayerInstance.m_glideVector.y = 160f;
             //PlayerMgr.Instance.PlayerInstance.m_fallVector.x = -15f;
             //PlayerMgr.Instance.PlayerInstance.m_fallVector.y = 4.5f;
             //PlayerMgr.Instance.PlayerInstance.m_leftVector.x = 5f;
