@@ -484,6 +484,8 @@ MonoBehaviour:
   currentchunk_bonustext: {fileID: 0}
   isStageClear: 0
   oneclear: 0
+  oneclearlast: 0
+  onedead: 0
 --- !u!114 &609754741
 MonoBehaviour:
   m_ObjectHideFlags: 0

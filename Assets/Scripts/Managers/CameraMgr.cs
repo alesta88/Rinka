@@ -3,7 +3,7 @@ using Cinemachine;
 
 public class CameraMgr : MonoSingleton<CameraMgr> {
     [SerializeField] Camera m_camera;
-    [SerializeField] CinemachineVirtualCamera m_cinemachineCam;
+    [SerializeField] public CinemachineVirtualCamera m_cinemachineCam;
     [SerializeField] float smoothspeed = 0.125f;
 
 
@@ -58,11 +58,17 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
             //    //PlayerMgr.Instance.PlayerInstance.m_rightVector.y = 150f;
             //    //PlayerMgr.Instance.PlayerInstance.m_rightDuration = 1f;
             //}
-
+            m_cinemachineCam.GetComponent<LockCameraZ>().enabled = false;
         }
         if (mycam_rotation !=0&&zrot==0)
         {
             m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, 90f, Space.World);
+           // composer.m_DeadZoneHeight = 1f;
+            composer.m_DeadZoneHeight = 0.25f;
+        }
+        if (mycam_rotation !=0&&zrot!=0)
+        {
+            m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, zrot, Space.World);
            // composer.m_DeadZoneHeight = 1f;
             composer.m_DeadZoneHeight = 0.25f;
         }
@@ -80,6 +86,18 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
         Debug.Log("035");
     }
 
+    public void CameraDeadZone(float zone)
+    {
+        var composer = m_cinemachineCam.GetCinemachineComponent<CinemachineFramingTransposer>();
+        composer.m_DeadZoneHeight = zone;
+    }
+    public void CameraToZero()
+    {
+        var composer = m_cinemachineCam.GetCinemachineComponent<CinemachineFramingTransposer>();
+        composer.transform.localRotation = Quaternion.identity;
+
+    }
+
     public void YposCamera()
     {
         var mycam_xpos = m_cinemachineCam.gameObject.transform.position.y;
@@ -92,14 +110,14 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
         m_cinemachineCam.gameObject.transform.position.Set(0f, 0f, 0f);
         //m_cinemachineCam.gameObject.transform.rotation = Quaternion.Euler(0f,0f,0f);
         //   m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, 0f, Space.Self);
-        if(Screen.orientation== ScreenOrientation.Portrait|| Screen.orientation == ScreenOrientation.PortraitUpsideDown)
-        {
-            m_cinemachineCam.m_Lens.OrthographicSize = 0.8f;
-        }
-        else
-        {
-            m_cinemachineCam.m_Lens.OrthographicSize = 0.48f;
-        }
+        //if(Screen.orientation== ScreenOrientation.Portrait|| Screen.orientation == ScreenOrientation.PortraitUpsideDown)
+        //{
+        //    m_cinemachineCam.m_Lens.OrthographicSize = 0.8f;
+        //}
+        //else
+        //{
+        //    m_cinemachineCam.m_Lens.OrthographicSize = 0.48f;
+        //}
     }
 
     public void Update()

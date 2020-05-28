@@ -13,6 +13,7 @@ TagManager:
   - BonusText
   - noText
   - reload
+  - LockZ
   layers:
   - Default
   - TransparentFX

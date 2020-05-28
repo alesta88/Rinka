@@ -31,10 +31,12 @@ public class StageMgr : MonoSingleton<StageMgr> {
 
     public bool isStageClear;
     public bool oneclear=false;
+    public bool oneclearlast;
+    public bool onedead=false;
 
     void Awake() {
         m_pool = new StageChunkPool( m_chunkViewPrefab );
-
+        onedead = false;
     }
 
     public void InitSpawnStage( Action<Player> onFinish = null ) {
@@ -51,10 +53,18 @@ public class StageMgr : MonoSingleton<StageMgr> {
         ///////////////////////Rotate camera 45f
          
         Debug.Log("ROTATE" + CurrentStage.rotate_value);
-       // if(CurrentStage.rotate_value)
+        // if(CurrentStage.rotate_value)
+        if (!onedead)
+        {
             CameraMgr.Instance.RotateCamera(CurrentStage.rotate_value);
-        
-       // CameraMgr.Instance.RotateCamera(CurrentStage.rotate_value);
+            onedead = true;
+        }
+        if (oneclearlast)
+        {
+            CameraMgr.Instance.RotateCamera(CurrentStage.rotate_value);
+            oneclearlast = false;
+        }
+
     }
 
     /// <summary>
@@ -66,10 +76,22 @@ public class StageMgr : MonoSingleton<StageMgr> {
         m_viewQueue.Enqueue( nextChunk );
         Debug.Log("STAGE " + GameModel.Stage.Value);
         Debug.Log("STAGEC " + GameModel.StageC.Value);
+
+        if (m_viewQueue.Count > MAX_CHUNKS-1)
+        {
+            currentchunk_bonustext = currChunk;
+            currChunk.FinishMark.gameObject.SetActive(true);
+        }
+        else
+        {
+            if (currChunk != null)
+                currChunk.FinishMark.gameObject.SetActive(false);
+        }
+
         if (m_viewQueue.Count > MAX_CHUNKS) 
         {
-            currChunk.FinishMark.gameObject.SetActive(true);
-            currentchunk_bonustext = currChunk;
+            //currChunk.FinishMark.gameObject.SetActive(true);
+           // currentchunk_bonustext = currChunk;
             //currentchunk_bonustext.gameObject.SetActive(true);
             //    currChunk.BonusText.gameObject.SetActive(true);
             Debug.Log("hgsogho"+m_viewQueue.Count);
@@ -79,8 +101,7 @@ public class StageMgr : MonoSingleton<StageMgr> {
         else
         {
             Debug.Log("hgsogho2" + m_viewQueue.Count);
-            if(currChunk!=null) 
-            currChunk.FinishMark.gameObject.SetActive(false);
+            
            //  currChunk.BonusText.gameObject.SetActive(false);
         }
 

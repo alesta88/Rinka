@@ -8,9 +8,19 @@ public class PlayerDeathEvent : IGameEvent {
         Debug.Log("LIVES " + GameModel.PlayerLives.Value);
 
         StageMgr.Instance.isStageClear = false;
+        StageMgr.Instance.oneclear = false;
+        StageMgr.Instance.onedead = true;
+        //CameraMgr.Instance.CameraToZero();
 
-      //alestastages  GameModel.StageWhenDied.Value = StageMgr.Instance.CurrentStage;//StageMgr.Instance.ClearNowStage; //
-        GameModel.StageWhenDied.Value = GameModel.Stage.Value.Chunks[0];
+        //alestastages  
+        if(StageMgr.Instance.CurrentStage.Difficulty>5)
+        {
+            GameModel.StageWhenDied.Value = GameModel.Stage.Value.Chunks[0];
+        }
+        else
+        {
+            GameModel.StageWhenDied.Value = StageMgr.Instance.CurrentStage;//StageMgr.Instance.ClearNowStage; //
+        }
 
      //   GameModel.StageWhenClear.Value = StageMgr.Instance.CurrentStage; 
         // GameModel.StageC.Value = StageMgr.Instance.ClearMetaData;

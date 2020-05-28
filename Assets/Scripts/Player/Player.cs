@@ -321,7 +321,6 @@ public class Player : MonoBehaviour {
         if( other.transform.tag == Define.Tag.WALL ) {
             // 壁にぶつけた
             MessageBroker.Default.Publish( new PlayerDeathEvent() );
-          // MessageBroker.Default.Publish( new ClearStageEvent() );
         } else if( other.tag == Define.Tag.ORB ) {
             // Orbの取得した
             Debug.Log("orb");
@@ -385,7 +384,11 @@ public class Player : MonoBehaviour {
         {
             StageMgr.Instance.StagesCount=0;
         }
-       
+        if (other.tag == "LockZ")
+        {
+            CameraMgr.Instance.CameraDeadZone(0.25f);
+            CameraMgr.Instance.m_cinemachineCam.GetComponent<LockCameraZ>().enabled = false;
+        }
 
         if (other.tag == Define.Tag.CLEAR)
         {
@@ -395,11 +398,12 @@ public class Player : MonoBehaviour {
         {
             StageMgr.Instance.currentchunk_bonustext.BonusText.gameObject.SetActive(true);
             StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.gameObject.SetActive(true);
+
             counterText = StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.GetComponentInChildren<Text>() as Text;
 
 
             flytoplayerevent = true;
-            mytime = 25f;
+            mytime = 15f;
             StartCoroutine(FlytoPL());
             
             //StartCoroutine(ClearEvent(28f));
@@ -438,31 +442,34 @@ public class Player : MonoBehaviour {
             var intmytime = (int)mytime;
             counterText.text = intmytime.ToString() + " to clear";
             Debug.Log("Countdown: " + counterText.text);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(2.0f);
             mytime--;
         }
     }
     IEnumerator ClearEvent(float time)
     {
-        
+        yield return new WaitForSeconds(time);
         this.m_minIlluminateRadius = 0.2f;
-        m_illuminateSeq.Play();
-        m_minIlluminateRadius = 0.2f;
-        m_wispSprite.color = Color.white;
+        this.m_illuminateSeq.Play();
+        this.m_minIlluminateRadius = 0.2f;
+        this.m_wispSprite.color = Color.white;
         this.transform.localScale = new Vector3(1f,1f,1f);
-        Debug.Log("reloadevent " + m_minIlluminateRadius);
+        Debug.Log("reloadevent " + this.transform.localScale);
         //StageMgr.Instance.currentchunk_bonustext.gameObject.SetActive(false);
-        counterText.gameObject.SetActive(false);
-        
-
+        //   counterText.gameObject.SetActive(false);
+        counterText.text = " ";
+      //  StageMgr.Instance.onedead = true;
+        CameraMgr.Instance.CameraDeadZone(1f);
+        CameraMgr.Instance.m_cinemachineCam.GetComponent<LockCameraZ>().enabled = true;
         GameModel.StageWhenClear.Value = null;
         StageMgr.Instance.StagesCount++;
         StageMgr.Instance.ConsumedOrbsInStage = 0;
         StageMgr.Instance.isStageClear = true;
         StageMgr.Instance.oneclear = false;
+        StageMgr.Instance.oneclearlast = true;
         Debug.Log("reloadevent2 " + m_minIlluminateRadius);
         GameModel.GameState.Value = Define.GameState.Clear;
-        yield return new WaitForSeconds(time);
+        
     }
 
 

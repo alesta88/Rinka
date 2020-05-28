@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9552e3de98f94674ca16c8feb2cb30e1, type: 3}
   m_Name: background_clearstage01
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 218687271408ed541b8fd45f64aa9fc9, type: 3}
+  Sprite: {fileID: 21300000, guid: 995e8158a466fa440b8c97087a3c943e, type: 3}
