@@ -38,7 +38,7 @@ public class GameOverController : MonoBehaviour, ISceneController {
     void BindInput() {
         // ポーズボタンが押された
         m_restartBtn.ObservableButton( this ).Subscribe( _ => GameModel.GameState.Value = Define.GameState.StageSelection );
- //alesta       //m_gameCenterRankingBtn.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.DisplayRanking() );
+ //alestasns      //m_gameCenterRankingBtn.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.DisplayRanking() );
         //m_googlePlayRankingBtn.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.DisplayRanking() );
         //m_lineBtn.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.PostLineMessage() );
         //m_facebookBtn.ObservableButton( this ).Subscribe( _ => SnsMgr.Instance.PostFacebookMessage() );

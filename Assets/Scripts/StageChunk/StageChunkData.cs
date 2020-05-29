@@ -8,9 +8,9 @@ public class StageChunkData : ScriptableObject {
     public Vector2 LowerEntryPosition;
     public Vector2 LowerExitPosition;
     public Sprite ItemSpawnAreaSprite;
- //   public Mesh SpawnMesh; //test
     public StageBackgroundData BackgroundData;
-public GameObject WallObject;
+
+    public GameObject WallObject;
     public Vector2 PlayerSpawnPosition;
     [Header( "Orb Distance" )]
     [Range( 0f, 4f )] public float MinOrbDistance;

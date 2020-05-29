@@ -31,13 +31,13 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
     public float ThresholdSenconds = 1.0f;
     public float ThresholdDistance = 100.0f;
 
+    //右左のスワイプ
     //private Subject<Unit> onSwipeLeft = new Subject<Unit>();
     ////alesta unirx 
     //public UniRx.IObservable<Unit> OnSwipeLeft
     //{
     //    get { return onSwipeLeft; }
     //}
-
     //private Subject<Unit> onSwipeRight = new Subject<Unit>();
     //public UniRx.IObservable<Unit> OnSwipeRight
     //{ 
@@ -120,6 +120,7 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
                 this.beginPosition = position;
                 this.beginTime = DateTime.Now;
             });
+        //右左のスワイプ
         //scroll right and left
         //m_tapScreenInput.GetComponent<ObservableEventTrigger>()
         //    .OnEndDragAsObservable()
@@ -129,7 +130,6 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
         //    .Where(position => beginPosition.x > position.x)
         //    .Where(position => Mathf.Abs(beginPosition.x - position.x) >= this.ThresholdDistance)
         //    .Subscribe(_ => player.Move.Value = Player.MoveState.Left);//Debug.Log("LEFTTTTTTTTTTT")); 
-
         //m_tapScreenInput.GetComponent<ObservableEventTrigger>()
         //    .OnEndDragAsObservable()
         //    .TakeUntilDisable(this)

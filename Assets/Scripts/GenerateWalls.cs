@@ -15,7 +15,6 @@ public class GenerateWalls : MonoBehaviour {
 
     [Header("----------------------------------------")]
     [Header("Particles")]
-    //public ParticleSystem[] SpawnParticles;
     public GameObject[] SpawnParticles;
     public int ParticleCount;
     StageFlowData m_stageFlow;
@@ -214,8 +213,8 @@ public class GenerateWalls : MonoBehaviour {
        if(ParticleCount!=0)
         for (int i = 0; i <= ParticleCount; i++)
         {
-            float spawnX = Random.Range(dataWidth-0.7f, dataWidth+3f);
-            float spawnY = Random.Range(dataHeight-1f, dataHeight+2f);
+            float spawnX = Random.Range(dataWidth-0.7f, dataWidth+6f);
+            float spawnY = Random.Range(dataHeight-2f, dataHeight+2f);
             GameObject spawnParticle = Instantiate(SpawnParticles[Random.Range(0,4)], new Vector3(spawnX,spawnY,0f), Quaternion.identity);
             spawnParticle.transform.parent = gameObject.transform;
         }
@@ -227,123 +226,5 @@ public class GenerateWalls : MonoBehaviour {
     {
         
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //public GameObject[] SpawnObject_top;
-    //public GameObject[] SpawnBorders;
-    //public int SpawnCount;
-    //private int randomINT;
-    //Quaternion q;
-    //Vector3 Pos;
-    //Vector3 ObjectNullPOS;
-    //int SpriteWidthScale;
-    //int SpriteHeightScale;
-    //float test=0f;
-    //void Awake()
-    //{
-    //    m_wallLayer = 1 << LayerMask.NameToLayer("StageWall");
-
-    //}
-
-
-    //void Start () {
-
-    //    ObjectNullPOS = this.transform.position;
-    //     q = this.transform.rotation;
-    //     Pos = this.transform.position;
-    //    Pos.x = this.transform.position .x- 3.2f;
-    //    Pos.y = 0.4f;
-    //    SpawnRandom(0.4f,-1f);
-    //    Pos.x = this.transform.position.x - 3.2f;
-    //   q.z += 180f;
-    //  //s  SpawnRandomBottom(-0.4f, 1f);
-    //    GameObject BorderTopObject = Instantiate(SpawnBorders[0], new Vector3(this.transform.position.x, +0.4f, 0), this.transform.rotation);
-    //    GameObject BorderBottomObject = Instantiate(SpawnBorders[1], new Vector3(this.transform.position.x, -0.4f, 0), Quaternion.Euler(0f, 0f, 180f));
-    //    BorderTopObject.transform.parent = gameObject.transform;
-    //    BorderBottomObject.transform.parent = gameObject.transform;
-    //}
-
-    //void SpawnRandom(float ypos,float ypos2)
-    //{
-
-    //    for (int i = 0; i < SpawnCount; i++)
-    //    {
-    //        randomINT = Random.Range(0, SpawnObject_top.Length);
-    //        SpriteWidthScale = SpawnObject_top[randomINT].GetComponent<SpriteRenderer>().sprite.texture.width;
-    //        SpriteHeightScale = SpawnObject_top[randomINT].GetComponent<SpriteRenderer>().sprite.texture.height;
-    //        //ypos2 = SpriteHeightScale / 1000f;
-    //        Pos.y = 0.4f;
-
-    //       if (!IsPointTouchingCollider(Pos, m_wallLayer))
-    //        {
-    //            Debug.Log("pos " + Pos);
-    //            Debug.Log("scale " + SpriteWidthScale / 3000f);
-    //            Debug.Log("scale2 " + SpriteWidthScale / 1000f);
-    //            Debug.Log("scale3 " + SpriteHeightScale / 1000f);
-    //            Pos.y -= (-0.05f+SpriteHeightScale / 2000f);
-    //            GameObject spawnObject = Instantiate(SpawnObject_top[randomINT], Pos, q);
-    //            spawnObject.transform.parent = gameObject.transform;
-    //            Debug.Log("bool " + IsPointTouchingCollider(Pos, m_wallLayer));
-    //        }
-    //      if (Pos.x <= this.transform.position.x + 3.2f)
-    //        {
-    //            Debug.Log("pos12358 " + this.transform.position);
-    //            Pos.x += (0.02f+ SpriteWidthScale / 1000f);
-    //              // 0.5f;
-    //        }
-    //    }
-    //}
-
-    //void SpawnRandomBottom(float ypos, float ypos2)
-    //{
-
-    //    for (int i = 0; i < SpawnCount; i++)
-    //    {
-    //        randomINT = Random.Range(0, SpawnObject_top.Length);
-    //        SpriteWidthScale = SpawnObject_top[randomINT].GetComponent<SpriteRenderer>().sprite.texture.width;
-    //        SpriteHeightScale = SpawnObject_top[randomINT].GetComponent<SpriteRenderer>().sprite.texture.height;
-    //        ypos2 = SpriteHeightScale / 1000f;
-    //        Pos.y = ypos + ypos2;
-
-    //         if (!IsPointTouchingCollider(Pos, m_wallLayer))
-    //        {
-    //            Debug.Log("pos " + Pos);
-    //            Debug.Log("scale " + SpriteWidthScale / 3000f);
-    //            Debug.Log("scale2 " + SpriteWidthScale / 1000f);
-    //            Debug.Log("scale3 " + SpriteHeightScale / 1000f);
-    //            Pos.y -= (-0.05f + SpriteHeightScale / 2000f);
-    //            GameObject spawnObject = Instantiate(SpawnObject_top[randomINT], Pos, q);
-    //            spawnObject.transform.parent = gameObject.transform;
-    //            Debug.Log("bool " + IsPointTouchingCollider(Pos, m_wallLayer));
-    //        }
-    //        if (Pos.x <= this.transform.position.x + 3.2f)
-    //        {
-    //            Debug.Log("pos12358 " + this.transform.position);
-    //            Pos.x += (0.02f + SpriteWidthScale / 1000f);
-    //            // 0.5f;
-    //        }
-    //    }
-    //}
-
-    //int m_wallLayer;
-    //Collider2D[] m_colOverlaps = new Collider2D[5];
-    //bool IsPointTouchingCollider(Vector3 point, int layer)
-    //{
-    //    int colCnt = Physics2D.OverlapCircleNonAlloc(point, /*SpriteWidthScale / 3000f*/0.15f, m_colOverlaps, layer);
-    //    return colCnt >= 1;
-    //}
 
 }

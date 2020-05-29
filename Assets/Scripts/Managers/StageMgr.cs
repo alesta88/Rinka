@@ -45,15 +45,13 @@ public class StageMgr : MonoSingleton<StageMgr> {
 
     public void InitSpawnStage( StageMetaData stageMetaData, Action<Player> onFinish = null ) {
         SceneMgr.Instance.FadeIn( 0f );
-      ///  GameModel.StageC.Value = null;/////////
         ReturnAllChunks();
         DisplayNextChunk( stageMetaData );
         DisplayNextChunk( stageMetaData );
         PlayerMgr.Instance.InstantiatePlayer( onFinish );
-        ///////////////////////Rotate camera 45f
+        ///////////////////////Rotate camera 
          
         Debug.Log("ROTATE" + CurrentStage.rotate_value);
-        // if(CurrentStage.rotate_value)
         if (!onedead)
         {
             CameraMgr.Instance.RotateCamera(CurrentStage.rotate_value);
@@ -90,11 +88,7 @@ public class StageMgr : MonoSingleton<StageMgr> {
 
         if (m_viewQueue.Count > MAX_CHUNKS) 
         {
-            //currChunk.FinishMark.gameObject.SetActive(true);
-           // currentchunk_bonustext = currChunk;
-            //currentchunk_bonustext.gameObject.SetActive(true);
-            //    currChunk.BonusText.gameObject.SetActive(true);
-            Debug.Log("hgsogho"+m_viewQueue.Count);
+            Debug.Log("hgsogho" + m_viewQueue.Count);
             var prevChunk = m_viewQueue.Dequeue();
             m_pool.Return(prevChunk);
         }
@@ -132,7 +126,7 @@ public class StageMgr : MonoSingleton<StageMgr> {
                 Debug.Log("DIEDSTAGE");
                 GameModel.SpawnStageChunk.Value = nextStageChunk;
                 GameModel.StageWhenDied.Value = null;
-
+                GameModel.StageWhenClear.Value = null;
                 StagesCounter = 0;
 
                 // 死んでいなくて最初プレイの場合、、最初のステージ部分スタート
@@ -241,7 +235,8 @@ public class StageMgr : MonoSingleton<StageMgr> {
 
     public void ReturnAllChunks() {
         foreach( var chunk in m_viewQueue ){
-            m_pool.Return( chunk );
+         m_pool.Return( chunk );
+         
         }
         m_viewQueue.Clear();
     }

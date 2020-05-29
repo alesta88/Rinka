@@ -324,19 +324,7 @@ public class Player : MonoBehaviour {
         } else if( other.tag == Define.Tag.ORB ) {
             // Orbの取得した
             Debug.Log("orb");
-            MessageBroker.Default.Publish( new ConsumeOrbEvent( other.GetComponent<OrbView>() ) );
-            //ParticleSystem PT01 = m_skinObj.GetComponentInChildren<ParticleSystem>();
-            //ParticleSystem PT02 = PT01.GetComponentInChildren<ParticleSystem>();
-            //ParticleSystem PT03 = PT01.GetComponentInChildren<ParticleSystem>();
-            //PT02 = PT01.transform.GetChild(0).GetComponentInChildren<ParticleSystem>();
-            //PT03 = PT01.transform.GetChild(1).GetComponentInChildren<ParticleSystem>();
-            //Debug.Log("Particle           " + PT02 + " " + PT03);
-            //var main = PT01.main;
-            //main.startColor = new Color(1, 0, 1, .5f);
-            //main = PT02.main;
-            //main.startColor = new Color(1, 0, 1, .5f);
-            //main = PT03.main;
-            //main.startColor = new Color(1, 0, 1, .5f);
+            MessageBroker.Default.Publish(new ConsumeOrbEvent(other.GetComponent<OrbView>()));
         }
         else if (other.tag == "Finish")
         {
@@ -350,9 +338,7 @@ public class Player : MonoBehaviour {
             GameModel.Score.Value += GameModel.Stage.Value.PointsPerOrb*2;
             AudioMgr.Instance.PlayGetOrb();
             other.GetComponent<Animator>().SetTrigger("play_fly");
-            m_wispIllumination.sprite = other.GetComponent<FlyToPlayer>().wispSprite;// orbData.WispIlluminationSprite;
-          //  MessageBroker.Default.Publish(new ConsumeOrbEvent(other.GetComponent<OrbView>()));
-            //StartCoroutine(ExecuteAfterTime2(0.5f));
+            m_wispIllumination.sprite = other.GetComponent<FlyToPlayer>().wispSprite;
         }
         //else
         //if (other.tag == "reload")
@@ -384,11 +370,7 @@ public class Player : MonoBehaviour {
         {
             StageMgr.Instance.StagesCount=0;
         }
-        if (other.tag == "LockZ")
-        {
-            CameraMgr.Instance.CameraDeadZone(0.25f);
-            CameraMgr.Instance.m_cinemachineCam.GetComponent<LockCameraZ>().enabled = false;
-        }
+
 
         if (other.tag == Define.Tag.CLEAR)
         {
@@ -400,10 +382,11 @@ public class Player : MonoBehaviour {
             StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.gameObject.SetActive(true);
 
             counterText = StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.GetComponentInChildren<Text>() as Text;
-
+          //  CameraMgr.Instance.CameraDeadZone(0.25f);
+            CameraMgr.Instance.m_cinemachineCam.GetComponent<LockCameraZ>().enabled = false;
 
             flytoplayerevent = true;
-            mytime = 15f;
+            mytime = 30f;
             StartCoroutine(FlytoPL());
             
             //StartCoroutine(ClearEvent(28f));
@@ -442,7 +425,7 @@ public class Player : MonoBehaviour {
             var intmytime = (int)mytime;
             counterText.text = intmytime.ToString() + " to clear";
             Debug.Log("Countdown: " + counterText.text);
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(1.0f);
             mytime--;
         }
     }

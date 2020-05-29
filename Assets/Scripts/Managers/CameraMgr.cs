@@ -26,7 +26,7 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
         if (mycam_rotation==0f&&zrot!=0)
         {
            m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, zrot, Space.World); 
-            composer.m_DeadZoneHeight = 0.35f;
+            composer.m_DeadZoneHeight = 0.15f;
             //PlayerMgr.Instance.PlayerInstance.m_flyVector.x = 50f;
             PlayerMgr.Instance.PlayerInstance.m_flyVector.x = 35f;
             //PlayerMgr.Instance.PlayerInstance.m_flyVector.y = 180f;
@@ -64,13 +64,13 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
         {
             m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, 90f, Space.World);
            // composer.m_DeadZoneHeight = 1f;
-            composer.m_DeadZoneHeight = 0.25f;
+            composer.m_DeadZoneHeight = 0.15f;
         }
         if (mycam_rotation !=0&&zrot!=0)
         {
             m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, zrot, Space.World);
            // composer.m_DeadZoneHeight = 1f;
-            composer.m_DeadZoneHeight = 0.25f;
+            composer.m_DeadZoneHeight = 0.15f;
         }
         if(zrot==0)
         {
@@ -79,7 +79,11 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
             PlayerMgr.Instance.PlayerInstance.m_flyVector.y = 215f;
             PlayerMgr.Instance.PlayerInstance.m_glideVector.x = 16f;
             PlayerMgr.Instance.PlayerInstance.m_glideVector.y = 160f;
-            composer.m_DeadZoneHeight = 0.35f;
+            composer.m_DeadZoneHeight = 0.15f;
+        }
+        else
+        {
+            composer.m_DeadZoneHeight = 0.15f;
         }
 
 

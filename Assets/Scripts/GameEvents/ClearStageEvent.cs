@@ -6,23 +6,17 @@ public class ClearStageEvent : IGameEvent
 {
     public ClearStageEvent()
     {
-        //GameModel.PlayerLives.Value += 10;
-        //    GameModel.GameState.Value = Define.GameState.GoToBonus; ;/// 
+      //GameModel.PlayerLives.Value += 10;
+      //    GameModel.GameState.Value = Define.GameState.GoToBonus; ;/// 
         Debug.Log("STAGECLEAREVENT!!"+ GameModel.GameState.Value);
-        //GameModel.StageWhenDied.Value = StageMgr.Instance.ClearNowStage;
+      //GameModel.StageWhenDied.Value = StageMgr.Instance.ClearNowStage;
         GameModel.StageWhenClear.Value = StageMgr.Instance.ClearNowStage;
-    //    GameModel.StageC.Value = StageMgr.Instance.ClearMetaData;
+      //  GameModel.StageC.Value = StageMgr.Instance.ClearMetaData;
         var i = GameModel.Stage.Value.StageNumber;
-     //   GameModel.Stage.Value = StageMgr.Instance.m_stageFlow.Stages[i]; 
-     //   Debug.Log("!!!" + GameModel.StageWhenDied.Value.Difficulty);
-   //alestasns     SnsMgr.Instance.ReportScore();
-        AudioMgr.Instance.PlayDeath();
+    　//   GameModel.Stage.Value = StageMgr.Instance.m_stageFlow.Stages[i]; 
+  　　//alestasns     SnsMgr.Instance.ReportScore();
+      //  AudioMgr.Instance.PlayDeath();　
         GameModel.CumulativeDistance.Value += GameModel.CurrentLifeDistance.Value;
-
-        //Analytics.CustomEvent(Define.AnalyticsEvent.STAGE_OF_DEATH, new Dictionary<string, object>()
-        //{
-        //    ["stage"] = GameModel.StageWhenDied.Value.Difficulty
-        //});
 
         // HighScore判定と保存
         var storedHighScore = PlayerPrefs.GetInt(Define.PlayerPref.HIGH_SCORE);

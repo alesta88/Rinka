@@ -22,8 +22,8 @@ MonoBehaviour:
   PlayerSpawnPosition: {x: -2.51, y: 0}
   MinOrbDistance: 0.2
   MaxOrbDistance: 0.5
-  MinOrbCount: 5
-  MaxOrbCount: 8
+  MinOrbCount: 8
+  MaxOrbCount: 15
   StageGenerate: {fileID: 11400000, guid: f5442ba8492d2214aaa51908ce9921b4, type: 2}
   rotate_value: 90
   stageColor: {r: 1, g: 1, b: 1, a: 1}
