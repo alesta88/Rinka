@@ -57,6 +57,7 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
         // スコアのモデルとUIのバインディング
         GameModel.Score.TakeUntilDisable( this ).DistinctUntilChanged().Subscribe( score => {
             m_scoreText.text = score.ToString();
+            m_scoreText.GetComponent<Animator>().SetTrigger("OnGotScore");
         } );
 
         // Reactiveではなくてスタート時だけに更新

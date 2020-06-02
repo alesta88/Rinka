@@ -71,6 +71,7 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
             m_cinemachineCam.gameObject.transform.Rotate(0.0f, 0.0f, zrot, Space.World);
            // composer.m_DeadZoneHeight = 1f;
             composer.m_DeadZoneHeight = 0.15f;
+            m_cinemachineCam.GetComponent<LockCameraZ>().enabled = false;
         }
         if(zrot==0)
         {
@@ -84,6 +85,7 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
         else
         {
             composer.m_DeadZoneHeight = 0.15f;
+            m_cinemachineCam.GetComponent<LockCameraZ>().enabled = false;
         }
 
 

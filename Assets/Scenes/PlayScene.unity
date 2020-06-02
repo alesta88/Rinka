@@ -1892,6 +1892,7 @@ GameObject:
   - component: {fileID: 2091737886}
   - component: {fileID: 2091737888}
   - component: {fileID: 2091737887}
+  - component: {fileID: 2091737889}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -1915,7 +1916,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1181, y: -1000}
+  m_AnchoredPosition: {x: 1185, y: -1000}
   m_SizeDelta: {x: 1593.8, y: 183.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2091737887
@@ -1939,8 +1940,7 @@ MonoBehaviour:
   m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a0612da07b0834d4bb2d7d6355ed73f0, type: 2}
-  m_sharedMaterial: {fileID: 21525250226318038, guid: a0612da07b0834d4bb2d7d6355ed73f0,
-    type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 42294fba79441b440bc42d8e5d56eaed, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2037,3 +2037,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091737885}
   m_CullTransparentMesh: 0
+--- !u!95 &2091737889
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091737885}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 788441a069d31c140b51fa2ca11896df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

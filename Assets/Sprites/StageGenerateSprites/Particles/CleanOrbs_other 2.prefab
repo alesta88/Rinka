@@ -9988,6 +9988,8 @@ MonoBehaviour:
   ps_child: {fileID: 1561651432300418}
   myColor: {r: 0.23113209, g: 1, b: 0.35810104, a: 0.8235294}
   wispSprite: {fileID: 21300000, guid: 600b27ba25da6b9428735a3dd6387cad, type: 3}
+  plusPointsText: {fileID: 4949675585868108599, guid: bbadae90d7cf4f74f9c1132488159305,
+    type: 3}
   m_flyhAnim: {fileID: 2900572125827683914}
 --- !u!95 &2900572125827683914
 Animator:

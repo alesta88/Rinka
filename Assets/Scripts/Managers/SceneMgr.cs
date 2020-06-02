@@ -383,7 +383,8 @@ public class SceneMgr : MonoSingleton<SceneMgr> {
         Debug.Log("abir1"+i );
         
       //  GameModel.Stage.Value = StageMgr.Instance.m_stageFlow.Stages[i-1]; //alestaworld
-        StageMgr.Instance.InitSpawnStage(GameModel.StageC.Value //StageMgr.Instance.m_stageFlow.Stages[i + 1] //m_stageFlow.Stages[Mathf.Min(i + 1, 5)]   //m_stageFlow.Stages[i+1] //
+         StageMgr.Instance.InitSpawnStage(GameModel.Stage.Value //StageMgr.Instance.m_stageFlow.Stages[i + 1] //m_stageFlow.Stages[Mathf.Min(i + 1, 5)]   //m_stageFlow.Stages[i+1] //
+      // StageMgr.Instance.InitSpawnStage(GameModel.StageC.Value 
             , onFinish: (player) => {
                 player.Move.Value = Player.MoveState.Glide;
                 GameModel.GameState.Value = Define.GameState.UnpauseCountdown;

@@ -4945,6 +4945,9 @@ MonoBehaviour:
   ps_child: {fileID: 1561651432300418}
   myColor: {r: 1, g: 0.39567146, b: 0.36320752, a: 0.78431374}
   wispSprite: {fileID: 21300000, guid: 0652e6fbcec0fc14ebc3885216855966, type: 3}
+  plusPointsText: {fileID: 4949675585868108599, guid: bbadae90d7cf4f74f9c1132488159305,
+    type: 3}
+  m_flyhAnim: {fileID: 0}
 --- !u!1001 &6912827277407871181
 PrefabInstance:
   m_ObjectHideFlags: 0

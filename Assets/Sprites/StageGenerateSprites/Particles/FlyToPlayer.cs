@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FlyToPlayer : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class FlyToPlayer : MonoBehaviour {
     public GameObject ps_child;
     public Color myColor;
     public Sprite wispSprite;
+    public GameObject plusPointsText;
     [SerializeField] Animator m_flyhAnim;
 
     void Awake()
@@ -71,7 +73,10 @@ public class FlyToPlayer : MonoBehaviour {
             Debug.Log("asasasasasas" + this.myColor);// collision.gameObject.GetComponent<SpriteRenderer>().color);
             touch = 1;
             m_flyhAnim.SetTrigger("play_fly");
+            // var a= Instantiate(plusPointsText);
+            StartCoroutine(ExecutPointsPlus(0.5f));
             Destroy(this.gameObject, 1f);
+        //    Destroy(a, 1f);
             //Color.cyan; //new Color(0f, 0f, 0f, 1f); ;
 
             //  ps_child.SetActive(true);
@@ -80,7 +85,17 @@ public class FlyToPlayer : MonoBehaviour {
 
 
 
-    IEnumerator ExecuteAfterTime(float time)
+    IEnumerator ExecutPointsPlus(float time)
+    {
+        yield return new WaitForSeconds(time);
+        var a = Instantiate(plusPointsText);
+        Destroy(a, 1f);
+    }
+
+
+
+
+        IEnumerator ExecuteAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
 
@@ -107,6 +122,7 @@ public class FlyToPlayer : MonoBehaviour {
         yield return new WaitForSeconds(time);
 
         this.GetComponent<SpriteRenderer>().enabled = false;
+        
     }
 
     //void findChildrens(Transform obj, Color newcolor)

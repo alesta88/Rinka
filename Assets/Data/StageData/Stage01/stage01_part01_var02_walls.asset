@@ -25,6 +25,6 @@ MonoBehaviour:
   MinOrbCount: 5
   MaxOrbCount: 12
   StageGenerate: {fileID: 11400000, guid: 1cc2b988760100343999f7483db14c31, type: 2}
-  rotate_value: -45
+  rotate_value: 0
   stageColor: {r: 1, g: 1, b: 1, a: 1}
   stageNumber: 1

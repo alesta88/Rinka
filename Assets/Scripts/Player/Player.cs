@@ -73,6 +73,8 @@ public class Player : MonoBehaviour {
     private float mytime;
     Text counterText;
 
+    public int chunkCounter;
+
     //***********************************************************
     // 初期化
     //***********************************************************
@@ -95,6 +97,8 @@ public class Player : MonoBehaviour {
         MessageBroker.Default.Receive<ConsumeOrbEvent>().TakeUntilDisable( this ).Subscribe( orbEvent => OnPlayerConsumedOrb( orbEvent.Orb ) );
         m_skinsprite = m_wispSprite;
         m_skinObj = m_defaultSkinObj;
+
+        //chunkCounter = 0;
     }
 
     void OnPlayerConsumedOrb( OrbView orb ) {
@@ -419,7 +423,6 @@ public class Player : MonoBehaviour {
 
     public IEnumerator StartCountdown()
     {
-        
         while (mytime > 0)
         {
             var intmytime = (int)mytime;
@@ -451,9 +454,23 @@ public class Player : MonoBehaviour {
         StageMgr.Instance.oneclear = false;
         StageMgr.Instance.oneclearlast = true;
         Debug.Log("reloadevent2 " + m_minIlluminateRadius);
+        chunkCounter++;
+        Debug.Log("stageslength " + GameModel.Stage.Value.Chunks.Length);
+        ChangeSceneOnClear();
         GameModel.GameState.Value = Define.GameState.Clear;
         
     }
-
+     
+    public void ChangeSceneOnClear()
+    {
+        var i = GameModel.Stage.Value.StageNumber;
+        var stage = StageMgr.Instance.m_stageFlow.Stages;
+        if (chunkCounter== GameModel.Stage.Value.Chunks.Length)//StageMgr.Instance.m_stageFlow.Stages.Length)
+        {
+            StageMgr.Instance.StagesCount = 0;
+            GameModel.Stage.Value = StageMgr.Instance.m_stageFlow.Stages[i];// StageMgr.Instance.m_stageFlow.Stages[nextStageIndex];
+        }
+        Debug.Log("i " + i+" stage "+stage + " game " + GameModel.Stage.Value+" chunkcounter "+chunkCounter);
+    }
 
 }
