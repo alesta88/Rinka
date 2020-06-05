@@ -715,8 +715,8 @@ MonoBehaviour:
   - {fileID: 981280970967009252, guid: 9509ffd9cb5af2948b9f50d104e00df1, type: 3}
   SpawnTopObject:
   - {fileID: 1105061434027196, guid: 959ebd6bcfc178945b9ff556a021328b, type: 3}
-  - {fileID: 1881269593966170, guid: c6dc6f1ded8c30c4da62ff1666ecf319, type: 3}
-  - {fileID: 1648495356695950, guid: 3dd0721a8306c5843a442482f799c129, type: 3}
+  - {fileID: 1516344636665656, guid: d73faa667f61d8c49925eb39b3a48ed9, type: 3}
+  - {fileID: 1632651377862188, guid: 86df5b2747021c14bb93e3468b1c9172, type: 3}
   SpawnBottomObject:
   - {fileID: 1805257202467784, guid: b055ffc2d272e424a86680113faf632e, type: 3}
   - {fileID: 1030334342945324, guid: 72515416ea69f7a4a9994097f6ef4f5c, type: 3}

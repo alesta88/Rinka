@@ -212,8 +212,8 @@ public class StageMgr : MonoSingleton<StageMgr> {
         for (int i = 0; i < m_stageFlow.Stages.Length; i++)
         {
             var stage = m_stageFlow.Stages[i];///////////////////// var stage = m_stageFlow.Stages[i];
-            Debug.Log("MyStages " + stage);
-            Debug.Log(ClearMetaData.Chunks[1]);
+            //Debug.Log("MyStages " + stage);
+            //Debug.Log(ClearMetaData.Chunks[1]);
         //if (/*stage == GameModel.Stage.Value &&*/ ConsumedOrbsInStage >= stage.OrbClearCount)
         //    {
         //        //int nextStageIndex = Mathf.Min(i + 1, m_stageFlow.Stages.Length - 1);

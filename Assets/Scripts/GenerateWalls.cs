@@ -207,15 +207,16 @@ public class GenerateWalls : MonoBehaviour {
     {
         float dataWidth = GetComponentInParent<StageChunkView>().transform.position.x;
         float dataHeight = GetComponentInParent<StageChunkView>().transform.position.y;
-       // const float MYSTERY_NUMBER = 0.027f;
-      //  float spawnAreaWidth = dataWidth * MYSTERY_NUMBER;
-       // float spawnAreaHeight = dataHeight * MYSTERY_NUMBER;
+        // const float MYSTERY_NUMBER = 0.027f;
+        //  float spawnAreaWidth = dataWidth * MYSTERY_NUMBER;
+        // float spawnAreaHeight = dataHeight * MYSTERY_NUMBER;
+        var stage_i = GameModel.Stage.Value.StageNumber;
        if(ParticleCount!=0)
         for (int i = 0; i <= ParticleCount; i++)
         {
             float spawnX = Random.Range(dataWidth-0.7f, dataWidth+6f);
-            float spawnY = Random.Range(dataHeight-2f, dataHeight+2f);
-            GameObject spawnParticle = Instantiate(SpawnParticles[Random.Range(0,4)], new Vector3(spawnX,spawnY,0f), Quaternion.identity);
+            float spawnY = Random.Range(dataHeight-1.2f, dataHeight+1.2f);
+            GameObject spawnParticle = Instantiate(SpawnParticles[Random.Range(0, stage_i)], new Vector3(spawnX,spawnY,0f), Quaternion.identity);
             spawnParticle.transform.parent = gameObject.transform;
         }
       //  GameModel.StageC.Value = null;

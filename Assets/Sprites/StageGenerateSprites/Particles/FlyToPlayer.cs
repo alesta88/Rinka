@@ -86,9 +86,11 @@ public class FlyToPlayer : MonoBehaviour {
 
 
     IEnumerator ExecutPointsPlus(float time)
-    {
+    { 
         yield return new WaitForSeconds(time);
+
         var a = Instantiate(plusPointsText);
+        a.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "+ "+(GameModel.Stage.Value.PointsPerOrb * 2).ToString();// "AAAAAA";
         Destroy(a, 1f);
     }
 

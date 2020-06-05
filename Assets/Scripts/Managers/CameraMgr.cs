@@ -80,7 +80,7 @@ public class CameraMgr : MonoSingleton<CameraMgr> {
             PlayerMgr.Instance.PlayerInstance.m_flyVector.y = 215f;
             PlayerMgr.Instance.PlayerInstance.m_glideVector.x = 16f;
             PlayerMgr.Instance.PlayerInstance.m_glideVector.y = 160f;
-            composer.m_DeadZoneHeight = 0.15f;
+            composer.m_DeadZoneHeight = 0.75f;//0.15f;
         }
         else
         {

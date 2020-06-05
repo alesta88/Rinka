@@ -712,7 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnObject:
-  - {fileID: 981280970967009252, guid: 9509ffd9cb5af2948b9f50d104e00df1, type: 3}
+  - {fileID: 6089728862416394668, guid: 9ad21371a5175054a94b82429bbc09a8, type: 3}
   SpawnTopObject:
   - {fileID: 1548456360616596, guid: dc1ae97285fdd1e4c8cbedd3c088ed71, type: 3}
   - {fileID: 1632651377862188, guid: 86df5b2747021c14bb93e3468b1c9172, type: 3}

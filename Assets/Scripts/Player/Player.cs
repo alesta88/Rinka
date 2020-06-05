@@ -71,7 +71,7 @@ public class Player : MonoBehaviour {
 
     public bool flytoplayerevent;
     private float mytime;
-    Text counterText;
+    private TMPro.TextMeshProUGUI counterText;
 
     public int chunkCounter;
 
@@ -97,7 +97,7 @@ public class Player : MonoBehaviour {
         MessageBroker.Default.Receive<ConsumeOrbEvent>().TakeUntilDisable( this ).Subscribe( orbEvent => OnPlayerConsumedOrb( orbEvent.Orb ) );
         m_skinsprite = m_wispSprite;
         m_skinObj = m_defaultSkinObj;
-
+        //timeBegin = DateTime.Now;
         //chunkCounter = 0;
     }
 
@@ -176,7 +176,9 @@ public class Player : MonoBehaviour {
 
         //UpdateFlyState();
         UpdateFlyLeftState();
-        UpdateDistance(); 
+        UpdateDistance();
+        //timeTimer = DateTime.Now - timeBegin;
+        //timeString = string.Format("{0:D2}:{1:D2}:{2:D2}", timeTimer.Hours, timeTimer.Minutes, timeTimer.Seconds);
     }
 
     void UpdateFlyState() {
@@ -385,7 +387,8 @@ public class Player : MonoBehaviour {
             StageMgr.Instance.currentchunk_bonustext.BonusText.gameObject.SetActive(true);
             StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.gameObject.SetActive(true);
 
-            counterText = StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.GetComponentInChildren<Text>() as Text;
+            // counterText = StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.GetComponentInChildren<Text>() as Text;
+            counterText = StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.GetComponentInChildren<TMPro.TextMeshProUGUI>();// as Text;
           //  CameraMgr.Instance.CameraDeadZone(0.25f);
             CameraMgr.Instance.m_cinemachineCam.GetComponent<LockCameraZ>().enabled = false;
 
@@ -425,11 +428,18 @@ public class Player : MonoBehaviour {
     {
         while (mytime > 0)
         {
-            var intmytime = (int)mytime;
-            counterText.text = intmytime.ToString() + " to clear";
+            var intmytime = mytime;
+            //   float fraction = mytime * 100;
+            float milliseconds = (int)(intmytime * 1000f) % 1000;
+            float fraction = (float)Math.Round(mytime, 2);
+
+            counterText.text =  "Bonus time : " + (float)Math.Round(intmytime, 3);
             Debug.Log("Countdown: " + counterText.text);
-            yield return new WaitForSeconds(1.0f);
-            mytime--;
+            if (mytime > 0.1f)
+                mytime -= Time.deltaTime;
+            else mytime = 0.00001f;
+            yield return new WaitForSeconds(0.001f);
+
         }
     }
     IEnumerator ClearEvent(float time)
@@ -472,5 +482,17 @@ public class Player : MonoBehaviour {
         }
         Debug.Log("i " + i+" stage "+stage + " game " + GameModel.Stage.Value+" chunkcounter "+chunkCounter);
     }
+
+
+    //private DateTime timeBegin;
+    //private TimeSpan timeTimer;
+    //public string timeString;
+    //public Rect rectTimer = new Rect(1100, 1100, 100, 120);
+
+
+    //void OnGUI()
+    //{
+    //    GUI.Label(rectTimer, timeString);
+    //}
 
 }

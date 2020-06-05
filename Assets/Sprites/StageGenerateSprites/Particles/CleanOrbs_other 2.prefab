@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 0.1308515, a: 1}
+      maxColor: {r: 0.4009434, g: 1, b: 0.47846833, a: 0.74509805}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5034,7 +5034,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.3160377, g: 0.85717964, b: 1, a: 1}
+      maxColor: {r: 0.40214744, g: 1, b: 0.3215686, a: 0.5372549}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6116,7 +6116,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 0}
-        key1: {r: 0, g: 0.7075472, b: 0.11563172, a: 0.9647059}
+        key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0.4056604, b: 0.016553013, a: 0}
         key3: {r: 0.13817197, g: 0.6509434, b: 0.23059972, a: 0}
         key4: {r: 0.13683695, g: 0.16586186, b: 0.7075472, a: 0}
@@ -6124,7 +6124,7 @@ ParticleSystem:
         key6: {r: 0.99887854, g: 0.67075354, b: 0.044680472, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 20338
+        ctime1: 65535
         ctime2: 46260
         ctime3: 36938
         ctime4: 49704
@@ -6132,7 +6132,7 @@ ParticleSystem:
         ctime6: 65535
         ctime7: 0
         atime0: 0
-        atime1: 21203
+        atime1: 32682
         atime2: 65535
         atime3: 65535
         atime4: 0
@@ -6140,7 +6140,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 2
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -9986,7 +9986,7 @@ MonoBehaviour:
   myPlayer: {fileID: 0}
   t: 0
   ps_child: {fileID: 1561651432300418}
-  myColor: {r: 0.23113209, g: 1, b: 0.35810104, a: 0.8235294}
+  myColor: {r: 0.8443396, g: 1, b: 0.86975354, a: 0.8235294}
   wispSprite: {fileID: 21300000, guid: 600b27ba25da6b9428735a3dd6387cad, type: 3}
   plusPointsText: {fileID: 4949675585868108599, guid: bbadae90d7cf4f74f9c1132488159305,
     type: 3}

@@ -86,6 +86,8 @@ public class StageChunkView : MonoBehaviour {
     }
 
     void CreateWall( StageChunkData chunkData ) {
+
+        var i = GameModel.Stage.Value.StageNumber;
         if ( m_wall == null || m_wall.name != chunkData.StageGenerate.WallObject.name ) {
 #if !RELEASE || ENABLE_LOG
             DebugMainInfo.Instance.StartMeasure();

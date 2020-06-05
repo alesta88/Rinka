@@ -19,7 +19,7 @@ MonoBehaviour:
     type: 3}
   BackgroundData: {fileID: 11400000, guid: 5f248b8f4cf8940489aeeff0db7ac4af, type: 2}
   WallObject: {fileID: 1674893655205622, guid: 1fb0f07f2300b824fa48f5836defb00c, type: 3}
-  PlayerSpawnPosition: {x: -2.378, y: 0.276626}
+  PlayerSpawnPosition: {x: -2.5, y: -0.15}
   MinOrbDistance: 0.5
   MaxOrbDistance: 0.85
   MinOrbCount: 6
@@ -27,3 +27,4 @@ MonoBehaviour:
   StageGenerate: {fileID: 11400000, guid: 6475275098f3528479038596db0131f3, type: 2}
   rotate_value: 0
   stageColor: {r: 1, g: 1, b: 1, a: 1}
+  stageNumber: 0

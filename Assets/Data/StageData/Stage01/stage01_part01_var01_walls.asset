@@ -19,7 +19,7 @@ MonoBehaviour:
     type: 3}
   BackgroundData: {fileID: 11400000, guid: f3d0f77f5dfeca145a8a9822d341d21f, type: 2}
   WallObject: {fileID: 1994344734119906, guid: 2da073ff4b373334481a42a7d15b97ba, type: 3}
-  PlayerSpawnPosition: {x: -2.51, y: 0}
+  PlayerSpawnPosition: {x: -2.51, y: 0.233}
   MinOrbDistance: 0.3
   MaxOrbDistance: 0.8
   MinOrbCount: 5
