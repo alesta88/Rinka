@@ -72,6 +72,7 @@ public class Player : MonoBehaviour {
     public bool flytoplayerevent;
     private float mytime;
     private TMPro.TextMeshProUGUI counterText;
+    private bool CinemashineCam;
 
     public int chunkCounter;
 
@@ -91,6 +92,7 @@ public class Player : MonoBehaviour {
 
         GameModel.GameState.TakeUntilDisable( this ).Where( state => state != Define.GameState.Playing ).Subscribe( _ => OnPaused() );
         GameModel.GameState.TakeUntilDisable( this ).Where( state => state == Define.GameState.Playing ).Subscribe( _ => OnUnpause() );
+      //  GameModel.GameSubState.TakeUntilDisable(this).Where(substate => substate == Define.GameSubState.NoBonusTime).Subscribe(substate => OnGameSubStateChanged(substate));
 
         MessageBroker.Default.Receive<PlayerDeathEvent>().TakeUntilDisable( this ).Subscribe( _ => Move.Value = MoveState.Die );
         MessageBroker.Default.Receive<ClearStageEvent>().TakeUntilDisable( this ).Subscribe( _ => Move.Value = MoveState.Clear );
@@ -99,8 +101,53 @@ public class Player : MonoBehaviour {
         m_skinObj = m_defaultSkinObj;
         //timeBegin = DateTime.Now;
         //chunkCounter = 0;
+        GameModel.GameSubState.Value = Define.GameSubState.NoBonusTime;
+        CinemashineCam = CameraMgr.Instance.m_cinemachineCam.GetComponent<LockCameraZ>().init;
     }
 
+    private void OnEnable()
+    {
+        Init();
+    }
+    void Init()
+    {
+        GameModel.GameSubState.TakeUntilDestroy(this).Subscribe(substate => OnGameSubStateChanged(substate));
+    }
+    void OnGameSubStateChanged(Define.GameSubState substate)
+    {
+        if (substate == Define.GameSubState.BonusTime)
+        {
+           // CinemashineCam = false;
+            flytoplayerevent = true;
+        }
+        else if (substate == Define.GameSubState.BackTo)
+        {
+            flytoplayerevent = false;
+            m_illuminateSeq.Play();
+            m_minIlluminateRadius = 0.2f;
+            m_wispSprite.color = Color.white;
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            Observable
+                .Timer(System.TimeSpan.FromSeconds(1.0f))
+                .Subscribe(_ =>
+                {
+                    StageMgr.Instance.currentchunk_bonustext.BonusText.gameObject.SetActive(false);
+                    //CameraMgr.Instance.m_cinemachineCam.GetComponent<LockCameraZ>().enabled = true;
+                    
+                    GameModel.StageWhenClear.Value = null;
+                    StageMgr.Instance.StagesCount++;
+                    StageMgr.Instance.ConsumedOrbsInStage = 0;
+                    StageMgr.Instance.isStageClear = true;
+                    StageMgr.Instance.oneclear = false;
+                    StageMgr.Instance.oneclearlast = true;
+                    chunkCounter++;
+                    ChangeSceneOnClear();
+                    GameModel.GameState.Value = Define.GameState.Clear;
+                    GameModel.GameSubState.Value = Define.GameSubState.NoBonusTime;
+                }
+            );
+        }
+    }
     void OnPlayerConsumedOrb( OrbView orb ) {
         Illuminate();
         Debug.Log("ORBDATA " + orb.Data);
@@ -154,10 +201,10 @@ public class Player : MonoBehaviour {
         m_rb.simulated = true;
         m_illuminateSeq.Play();
 
-        if(flytoplayerevent==true)
-        {
-            StartCoroutine(FlytoPL());
-        }
+        //if(flytoplayerevent==true)
+        //{
+        //    StartCoroutine(FlytoPL());
+        //}
     }
 
     //***********************************************************
@@ -385,23 +432,21 @@ public class Player : MonoBehaviour {
         if (other.tag == "BonusText")
         {
             StageMgr.Instance.currentchunk_bonustext.BonusText.gameObject.SetActive(true);
-            StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.gameObject.SetActive(true);
-
-            // counterText = StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.GetComponentInChildren<Text>() as Text;
-            counterText = StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.GetComponentInChildren<TMPro.TextMeshProUGUI>();// as Text;
-          //  CameraMgr.Instance.CameraDeadZone(0.25f);
-            CameraMgr.Instance.m_cinemachineCam.GetComponent<LockCameraZ>().enabled = false;
-
-            flytoplayerevent = true;
-            mytime = 30f;
-            StartCoroutine(FlytoPL());
+            //StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.gameObject.SetActive(true);
             
-            //StartCoroutine(ClearEvent(28f));
+            //counterText = StageMgr.Instance.currentchunk_bonustext.CountdownBonusText.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            
+
+            //flytoplayerevent = true;
+            //mytime = 30f;
+            //StartCoroutine(FlytoPL());
+
+            GameModel.GameSubState.Value = Define.GameSubState.BonusTime;
         }
         if (other.tag == "noText")
         {
-            StageMgr.Instance.currentchunk_bonustext.BonusText.gameObject.SetActive(false);
-            
+           // StageMgr.Instance.currentchunk_bonustext.BonusText.gameObject.SetActive(false);
+            //
         }
     }
 
@@ -413,63 +458,60 @@ public class Player : MonoBehaviour {
         m_innerGlowTween.Kill();
     }
 
-    IEnumerator FlytoPL()
-    {
-        StartCoroutine(StartCountdown());
-        yield return new WaitForSeconds(mytime);
-        flytoplayerevent = false;
-        StartCoroutine(ClearEvent(1f));
-        Debug.Log("UNPAUSE "+mytime);
-       
+    //IEnumerator FlytoPL()
+    //{
+    //    StartCoroutine(StartCountdown());
+    //    yield return new WaitForSeconds(mytime);
+    //    flytoplayerevent = false;
+    //    StartCoroutine(ClearEvent(1f));
+    //    Debug.Log("UNPAUSE "+mytime);
+    //}
 
-    }
+    //public IEnumerator StartCountdown()
+    //{
+    //    while (mytime > 0)
+    //    {
+    //        var intmytime = mytime;
+    //        //   float fraction = mytime * 100;
+    //        float milliseconds = (int)(intmytime * 1000f) % 1000;
+    //        float fraction = (float)Math.Round(mytime, 2);
 
-    public IEnumerator StartCountdown()
-    {
-        while (mytime > 0)
-        {
-            var intmytime = mytime;
-            //   float fraction = mytime * 100;
-            float milliseconds = (int)(intmytime * 1000f) % 1000;
-            float fraction = (float)Math.Round(mytime, 2);
-
-            counterText.text =  "Bonus time : " + (float)Math.Round(intmytime, 3);
-            Debug.Log("Countdown: " + counterText.text);
-            if (mytime > 0.1f)
-                mytime -= Time.deltaTime;
-            else mytime = 0.00001f;
-            yield return new WaitForSeconds(0.001f);
-
-        }
-    }
-    IEnumerator ClearEvent(float time)
-    {
-        yield return new WaitForSeconds(time);
-        this.m_minIlluminateRadius = 0.2f;
-        this.m_illuminateSeq.Play();
-        this.m_minIlluminateRadius = 0.2f;
-        this.m_wispSprite.color = Color.white;
-        this.transform.localScale = new Vector3(1f,1f,1f);
-        Debug.Log("reloadevent " + this.transform.localScale);
-        //StageMgr.Instance.currentchunk_bonustext.gameObject.SetActive(false);
-        //   counterText.gameObject.SetActive(false);
-        counterText.text = " ";
-      //  StageMgr.Instance.onedead = true;
-        CameraMgr.Instance.CameraDeadZone(1f);
-        CameraMgr.Instance.m_cinemachineCam.GetComponent<LockCameraZ>().enabled = true;
-        GameModel.StageWhenClear.Value = null;
-        StageMgr.Instance.StagesCount++;
-        StageMgr.Instance.ConsumedOrbsInStage = 0;
-        StageMgr.Instance.isStageClear = true;
-        StageMgr.Instance.oneclear = false;
-        StageMgr.Instance.oneclearlast = true;
-        Debug.Log("reloadevent2 " + m_minIlluminateRadius);
-        chunkCounter++;
-        Debug.Log("stageslength " + GameModel.Stage.Value.Chunks.Length);
-        ChangeSceneOnClear();
-        GameModel.GameState.Value = Define.GameState.Clear;
+    //        counterText.text =  "Bonus time : " + (float)Math.Round(intmytime, 3);
+    //        Debug.Log("Countdown: " + counterText.text);
+    //        if (mytime > 0.1f)
+    //            mytime -= Time.deltaTime;
+    //        else mytime = 0.00001f;
+    //        yield return new WaitForSeconds(0.001f);
+    //    }
+    //}
+    //IEnumerator ClearEvent(float time)
+    //{
+    //    yield return new WaitForSeconds(time);
+    //    this.m_minIlluminateRadius = 0.2f;
+    //    this.m_illuminateSeq.Play();
+    //    this.m_minIlluminateRadius = 0.2f;
+    //    this.m_wispSprite.color = Color.white;
+    //    this.transform.localScale = new Vector3(1f,1f,1f);
+    //    Debug.Log("reloadevent " + this.transform.localScale);
+    //    //StageMgr.Instance.currentchunk_bonustext.gameObject.SetActive(false);
+    //    //   counterText.gameObject.SetActive(false);
+    //    counterText.text = " ";
+    //  //  StageMgr.Instance.onedead = true;
+    //    CameraMgr.Instance.CameraDeadZone(1f);
+    //    CameraMgr.Instance.m_cinemachineCam.GetComponent<LockCameraZ>().enabled = true;
+    //    GameModel.StageWhenClear.Value = null;
+    //    StageMgr.Instance.StagesCount++;
+    //    StageMgr.Instance.ConsumedOrbsInStage = 0;
+    //    StageMgr.Instance.isStageClear = true;
+    //    StageMgr.Instance.oneclear = false;
+    //    StageMgr.Instance.oneclearlast = true;
+    //    Debug.Log("reloadevent2 " + m_minIlluminateRadius);
+    //    chunkCounter++;
+    //    Debug.Log("stageslength " + GameModel.Stage.Value.Chunks.Length);
+    //    ChangeSceneOnClear();
+    //    GameModel.GameState.Value = Define.GameState.Clear;
         
-    }
+    //}
      
     public void ChangeSceneOnClear()
     {

@@ -62,6 +62,12 @@ public class FlyToPlayer : MonoBehaviour {
 
             }
         }
+        else
+        {
+            njhf.transform.localScale = new Vector3(1f, 1f, 1f);
+            njhf.m_wispSprite.GetComponent<SpriteRenderer>().color = Color.white;
+            njhf.m_minIlluminateRadius = 0.2f;
+        }
         
        
 
@@ -121,6 +127,7 @@ public class FlyToPlayer : MonoBehaviour {
     }
     IEnumerator ExecuteAfterTime2(float time)
     {
+
         yield return new WaitForSeconds(time);
 
         this.GetComponent<SpriteRenderer>().enabled = false;

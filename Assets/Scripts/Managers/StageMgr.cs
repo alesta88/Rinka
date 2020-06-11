@@ -18,7 +18,7 @@ public class StageMgr : MonoSingleton<StageMgr> {
     public StageChunkData CurrentStage => m_viewQueue.Count == 2 ? m_viewQueue.ElementAt( 0 ).Data : m_viewQueue.ElementAt( 1 ).Data;
     public StageChunkData ClearNowStage;
     public GameObject Finmrk;
-    public StageMetaData ClearMetaData;
+    public StageMetaData ClearMetaData; 
 
     public Queue<StageChunkView> m_viewQueue = new Queue<StageChunkView>();
     const int MAX_CHUNKS = 3;//alesta

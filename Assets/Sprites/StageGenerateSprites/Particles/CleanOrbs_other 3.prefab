@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 198054387877473346}
   - component: {fileID: 199436705624456802}
   m_Layer: 0
-  m_Name: pf_vfx-ult_xp-ckit_psys_oneshot_distortedShockwave-light
+  m_Name: Blast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4167774266395664
 Transform:
   m_ObjectHideFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561651432300418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4410015818439142}
@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 198603804849954656}
   - component: {fileID: 199929258337586436}
   m_Layer: 0
-  m_Name: Particle System (1)
+  m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4838,7 +4838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755041364289264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0087, y: -0.0036, z: 0}
+  m_LocalPosition: {x: -0.008, y: -0.0089, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4410015818439142}

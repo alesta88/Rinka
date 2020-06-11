@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+
 //using DG.Tweening;
 using UniRx;
 using UniRx.Triggers;
@@ -14,6 +15,7 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
     [SerializeField] TMP_Text m_highScoreText;
     [SerializeField] TMP_Text m_distanceText;
     [SerializeField] TMP_Text m_scoreText;
+    [SerializeField] TMP_Text m_timerText;
     [SerializeField] TMP_Text m_pauseText;
     [SerializeField] TMP_Text m_countdownText;
     [SerializeField] public TMP_Text m_countdownBonusText;
@@ -159,6 +161,11 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
             .TakeUntilDisable( this )
             .Subscribe( state => OnGameStateChanged( state ) );
 
+        GameModel.GameSubState
+            .DistinctUntilChanged()
+            .TakeUntilDisable(this)
+            .Subscribe(substate => OnGameSubStateChanged(substate));
+
         GameModel.TotalDistance
             .DistinctUntilChanged()
             .TakeUntilDestroy( this )
@@ -216,7 +223,9 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
 
         if( state == Define.GameState.UnpauseCountdown ) {
             PlayCountdown();
-        } 
+        }
+
+       
     }
 
     void PlayCountdown() {
@@ -227,11 +236,54 @@ public class PlaySceneController : MonoBehaviour, ISceneController {
             GameModel.GameState.Value = Define.GameState.Playing 
         );
     }
-
-    void SetCountdownText( float waitTime, string text ) {
-        var duration = System.TimeSpan.FromSeconds( waitTime );
-        Observable.Timer( duration, Scheduler.MainThreadIgnoreTimeScale ).Subscribe( _ => m_countdownText.text = text );
+    void SetCountdownText(float waitTime, string text)
+    {
+        var duration = System.TimeSpan.FromSeconds(waitTime);
+        Observable.Timer(duration, Scheduler.MainThreadIgnoreTimeScale).Subscribe(_ => m_countdownText.text = text);
     }
+
+
+
+    void OnGameSubStateChanged(Define.GameSubState substate)
+    {
+        m_timerText.enabled = (substate != Define.GameSubState.NoBonusTime);
+      //  m_timerText.enabled = (substate == Define.GameSubState.BackTo);
+        if (substate == Define.GameSubState.BonusTime)
+        {
+            PlayTimer();
+        }
+    }
+
+    //IDisposable subscription;
+    //IObservable 
+    static double modf(double x, out double intptr) { intptr = Math.Truncate(x); return x % 1f; }
+    void PlayTimer()
+    {
+        var timer1 = 30f;
+         //subscription=
+           Observable.Interval(TimeSpan.FromMilliseconds(10))
+           .Select(x => timer1 = timer1 > 0.001f ? GameModel.GameState.Value != Define.GameState.Playing ? timer1 : timer1 - 0.03f : 0 )
+           .TakeWhile(x => (timer1 > 0))
+       .Subscribe(_ =>
+       {
+           Debug.Log("My time: " + timer1);
+           timer1= (float)Math.Round(timer1, 3);
+           var timer2 = (timer1- Math.Truncate(timer1))*100;
+          // Debug.Log("TIMER " + Math.Round(timer2, 2) + " %100 " + Math.Round(timer2, 2) % 10);
+           string timer3 = /*Math.Round(timer2, 2) % 10 == 0 ||*/ Math.Round(timer2, 2)<10 ? "0"+Math.Round(timer2, 2).ToString()  : (Math.Round(timer2, 2).ToString() );
+           string timer3_1 = Math.Truncate(timer1) >= 10 ? Math.Truncate(timer1).ToString() : "0" + Math.Truncate(timer1).ToString();
+           m_timerText.text = timer3_1 + ":" + timer3;// (float)Math.Round(timer2, 3); //
+           //string.Format("{0:00}", timer1);
+       }, () =>
+       {
+           //OnCompleteで文字を消す
+           Debug.Log("My time: 0.00");
+           m_timerText.text = "00:00";
+           GameModel.GameSubState.Value = Define.GameSubState.BackTo;
+       });
+    }
+
+
 
 
     void OnApplicationFocus(bool focus)

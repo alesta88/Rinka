@@ -116,4 +116,12 @@ public static class Define {
         Clear,
         Skin
     }
+
+    public enum GameSubState
+    {
+        BonusTime,
+        BackTo,
+        NoBonusTime
+    }
+
 }

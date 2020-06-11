@@ -19,6 +19,7 @@ public static class GameModel {
     public static ReactiveProperty<int> HighScore { get; } = new ReactiveProperty<int>();
     public static ReactiveProperty<int> PlayerLives { get; } = new ReactiveProperty<int>();
     public static ReactiveProperty<Define.GameState> GameState { get; } = new ReactiveProperty<Define.GameState>();
+    public static ReactiveProperty<Define.GameSubState> GameSubState { get; } = new ReactiveProperty<Define.GameSubState>();
     public static ReactiveProperty<StageMetaData> Stage { get; } = new ReactiveProperty<StageMetaData>();
     public static ReactiveProperty<StageMetaData> StageC { get; } = new ReactiveProperty<StageMetaData>();
     public static ReactiveProperty<StageChunkData> SpawnStageChunk { get; } = new ReactiveProperty<StageChunkData>();
